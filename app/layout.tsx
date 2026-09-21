@@ -6,6 +6,7 @@ import { DirectionProvider } from "@/components/ui/direction";
 import Providers from "@/app/providers";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { SentryInit } from "@/components/sentry-init";
 import WebsiteClosedScreen from "@/features/website-status/components/website-closed-screen";
 import { getWebsiteStatus } from "@/features/website-status/services/get-website-status";
 import { getWebsiteClosedView } from "@/features/website-status/utils/get-website-closed-view";
@@ -78,6 +79,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <SentryInit />
         {closedView ? (
           <WebsiteClosedScreen view={closedView} />
         ) : (
