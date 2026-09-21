@@ -2,7 +2,12 @@ export const AUTH_TOKEN_COOKIE = "access_token";
 
 export const AUTH_TOKEN_MAX_AGE = 60 * 60 * 24 * 30;
 
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+// NOTE (test deployment): fall back to the Railway TEST backend when
+// NEXT_PUBLIC_BASE_URL is unset OR empty. A real env var still overrides this.
+// Revert to `?? ""` before shipping to production.
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "https://aqdi-new-backend-main-production.up.railway.app/api/v2";
 
 /**
  * Marks every request as coming from the web SPA. The backend only returns the
