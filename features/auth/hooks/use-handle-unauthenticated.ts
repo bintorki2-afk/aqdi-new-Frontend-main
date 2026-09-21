@@ -11,6 +11,12 @@ export function useHandleUnauthenticated() {
 
   return function handleUnauthenticated() {
     clearUser();
-    router.push(`/login?callbackUrl=${encodeURIComponent(pathname)}`);
+    // Preserve the current query string (e.g. ?id=residential) so the user
+    // returns to the exact same flow after logging in, instead of silently
+    // defaulting to the commercial contract.
+    const search =
+      typeof window !== "undefined" ? window.location.search : "";
+    const target = `${pathname}${search}`;
+    router.push(`/login?callbackUrl=${encodeURIComponent(target)}`);
   };
 }
