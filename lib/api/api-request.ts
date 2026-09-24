@@ -61,6 +61,8 @@ export async function apiRequest<T>(
         ...buildAuthHeaders(token, isFormData),
         ...(requestOptions?.headers || {}),
       },
+      // Bound every read so a slow/unresponsive backend cannot hang the request forever.
+      signal: requestOptions?.signal ?? AbortSignal.timeout(20000),
     });
 
     data = await response.json().catch(() => null);
@@ -114,6 +116,7 @@ export async function apiFormDataRequest<T>(
       method,
       body: compressedFormData,
       headers: buildAuthHeaders(token, true),
+      signal: AbortSignal.timeout(60000),
     });
 
     data = await response.json().catch(() => null);
