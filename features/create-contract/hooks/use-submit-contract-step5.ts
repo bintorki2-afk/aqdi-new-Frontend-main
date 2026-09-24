@@ -1,15 +1,8 @@
 "use client";
 
-import { useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { toast } from "sonner";
 
-import {
-  contractFinanceSummaryKeys,
-  contractFinancialKeys,
-} from "@/features/create-contract/query-keys";
-import { submitContractStep5 } from "@/features/create-contract/services/submit-contract-step5";
 import { useCreateContractDraftStore } from "@/features/create-contract/stores/use-create-contract-draft-store";
 import type { RentedUnitDataState } from "@/features/create-contract/types/rented-unit-step";
 
@@ -22,16 +15,12 @@ export function useSubmitContractStep5() {
   const contractSession = useCreateContractDraftStore((state) => state.contractSession);
   const contractStep4Data = useCreateContractDraftStore((state) => state.contractStep4Data);
   const contractStep5Data = useCreateContractDraftStore((state) => state.contractStep5Data);
-  const setContractStep5Data = useCreateContractDraftStore(
-    (state) => state.setContractStep5Data,
-  );
-  const queryClient = useQueryClient();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function submitStep5({ rentedUnits }: SubmitContractStep5Input): Promise<boolean> {
-    if (isSubmitting) {
-      return false;
-    }
+  async function submitStep5(
+    input: SubmitContractStep5Input,
+  ): Promise<boolean> {
+    // Data is captured into the client draft; the backend write is skipped.
+    void input;
 
     const contractId =
       contractSession?.contractId ??
@@ -50,31 +39,11 @@ export function useSubmitContractStep5() {
       return true;
     }
 
-    setIsSubmitting(true);
-
-    try {
-      const result = await submitContractStep5({
-        contractId,
-        rentedUnits,
-      });
-
-      if (!result.ok) {
-        toast.error(result.error || t("submitUnitError"));
-        return false;
-      }
-
-      setContractStep5Data(result.data);
-      // Meter fees feed the single-source total: refresh cached summaries.
-      void queryClient.invalidateQueries({ queryKey: contractFinanceSummaryKeys.all });
-      void queryClient.invalidateQueries({ queryKey: contractFinancialKeys.all });
-      return true;
-    } finally {
-      setIsSubmitting(false);
-    }
+    return true;
   }
 
   return {
     submitStep5,
-    isSubmitting,
+    isSubmitting: false,
   };
 }

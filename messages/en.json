@@ -1620,6 +1620,24 @@
     }
   },
   "createContract": {
+    "submit": {
+      "title": "Review and submit your order",
+      "reviewIntro": "Check your details before submitting, and enter a WhatsApp number so we can reach you about the contract.",
+      "whatsappLabel": "WhatsApp contact number",
+      "whatsappPlaceholder": "05XXXXXXXX",
+      "whatsappHint": "Enter a Saudi mobile number starting with 05 so we can send you the contract details on WhatsApp.",
+      "whatsappInvalid": "Please enter a valid Saudi mobile number (e.g. 05XXXXXXXX).",
+      "submitButton": "Submit order",
+      "submitting": "Submitting...",
+      "successTitle": "Your order was received",
+      "successBody": "We'll contact you on WhatsApp to complete the contract procedures. Keep your order number for reference.",
+      "orderNumberLabel": "Order number",
+      "contactWhatsappCta": "Contact us on WhatsApp",
+      "errorTitle": "Couldn't submit your order",
+      "errorBody": "Something went wrong while submitting your order. You can try again or contact us directly on WhatsApp.",
+      "retry": "Try again",
+      "back": "Back"
+    },
     "incompleteContinue": "Please complete all required fields before continuing",
     "fieldRequired": "This field is required",
     "backLabel": "Back",

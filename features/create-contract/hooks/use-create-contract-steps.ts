@@ -10,6 +10,9 @@ import {
 
 export function useCreateContractSteps() {
   const currentStep = useCreateContractDraftStore((state) => state.currentStep);
+  const maxReachedStepIndex = useCreateContractDraftStore(
+    (state) => state.maxReachedStepIndex,
+  );
   const contractSession = useCreateContractDraftStore((state) => state.contractSession);
   const selectedDeedType = useCreateContractDraftStore(
     (state) => state.deed.selectedDeedType,
@@ -33,6 +36,7 @@ export function useCreateContractSteps() {
 
   const progressState = {
     currentStep,
+    maxReachedStepIndex,
     contractSession,
     selectedDeedType,
     contractStep1Data,

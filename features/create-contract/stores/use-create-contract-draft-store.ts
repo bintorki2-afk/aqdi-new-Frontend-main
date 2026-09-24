@@ -135,6 +135,7 @@ type TenantDraftState = {
 
 type CreateContractDraftStore = {
   currentStep: CreateContractStep;
+  maxReachedStepIndex: number;
   contractSession: ContractSession | null;
   contractStep1Data: ContractStep1ApiData | null;
   contractStep2Data: ContractStep2ApiData | null;
@@ -150,6 +151,7 @@ type CreateContractDraftStore = {
   tenant: TenantDraftState;
   financeData: FinanceDataState;
   paymentData: PaymentDataState;
+  contactWhatsapp: string;
   skippingOwnerStep: boolean;
   setCurrentStep: (step: CreateContractStep) => void;
   goNextStep: () => void;
@@ -191,6 +193,7 @@ type CreateContractDraftStore = {
   saveTenantRoles: (roleIds: number[]) => void;
   saveOtherConditions: (conditions: string[]) => void;
   setPaymentData: (data: PaymentDataState) => void;
+  setContactWhatsapp: (value: string) => void;
   setFreshContractSession: (session: FreshContractSession) => void;
   setContractStep1Data: (data: ContractStep1ApiData | null) => void;
   setContractStep2Data: (data: ContractStep2ApiData | null) => void;
@@ -437,6 +440,7 @@ function normalizePersistedRentedUnits(
 function createInitialState() {
   return {
     currentStep: "intro" as CreateContractStep,
+    maxReachedStepIndex: 0,
     contractSession: null as ContractSession | null,
     contractStep1Data: null as ContractStep1ApiData | null,
     contractStep2Data: null as ContractStep2ApiData | null,
@@ -456,6 +460,7 @@ function createInitialState() {
     },
     financeData: createEmptyFinanceData(),
     paymentData: { ...EMPTY_PAYMENT_DATA },
+    contactWhatsapp: "",
     skippingOwnerStep: false,
   };
 }
@@ -470,6 +475,7 @@ export const useCreateContractDraftStore = create<CreateContractDraftStore>()(
         if (index < CREATE_CONTRACT_STEPS.length - 1) {
           set({
             currentStep: CREATE_CONTRACT_STEPS[index + 1],
+            maxReachedStepIndex: Math.max(get().maxReachedStepIndex, index + 1),
             skippingOwnerStep: false,
           });
         }
@@ -913,6 +919,7 @@ export const useCreateContractDraftStore = create<CreateContractDraftStore>()(
         }));
       },
       setPaymentData: (data) => set({ paymentData: data }),
+      setContactWhatsapp: (value) => set({ contactWhatsapp: value }),
       setFreshContractSession: (session) =>
         set((state) => ({
           contractSession: session,
@@ -1092,6 +1099,7 @@ export const useCreateContractDraftStore = create<CreateContractDraftStore>()(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         currentStep: state.currentStep,
+        maxReachedStepIndex: state.maxReachedStepIndex,
         contractSession: state.contractSession,
         contractStep1Data: state.contractStep1Data,
         contractStep2Data: state.contractStep2Data,
@@ -1159,6 +1167,7 @@ export const useCreateContractDraftStore = create<CreateContractDraftStore>()(
         },
         financeData: state.financeData,
         paymentData: state.paymentData,
+        contactWhatsapp: state.contactWhatsapp,
       }),
       merge: (persistedState, currentState) => {
         const persisted = (persistedState ?? {}) as Partial<CreateContractDraftStore>;

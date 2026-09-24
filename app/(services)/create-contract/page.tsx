@@ -40,29 +40,42 @@ export default async function CreateContractPage({
   const queryClient = getQueryClient();
   const propertyContractType = toPropertyContractType(contractType);
 
+  // The order flow no longer requires a live backend: a failing read must not
+  // crash the page, so each prefetch (and the WhatsApp lookup) swallows errors
+  // and falls back to its default. The client read hooks refetch as needed.
   const [t, whatsappHref] = await Promise.all([
     getTranslations("createContract"),
-    getWhatsappHref(),
-    queryClient.prefetchQuery({
-      queryKey: contractPaperworkKeys.list(propertyContractType),
-      queryFn: () => getPaperwork(propertyContractType),
-    }),
-    queryClient.prefetchQuery({
-      queryKey: contractServicesPricingKeys.list(propertyContractType),
-      queryFn: () => getServicesPricing(propertyContractType),
-    }),
-    queryClient.prefetchQuery({
-      queryKey: contractPaymentTypeKeys.list(propertyContractType),
-      queryFn: () => getPaymentTypes(propertyContractType),
-    }),
-    queryClient.prefetchQuery({
-      queryKey: settingContractsKeys.list(),
-      queryFn: () => getSettingContracts(),
-    }),
-    queryClient.prefetchQuery({
-      queryKey: meterFeeSettingsKeys.detail(),
-      queryFn: () => getMeterFeeSettings(),
-    }),
+    getWhatsappHref().catch(() => "https://wa.me/"),
+    queryClient
+      .prefetchQuery({
+        queryKey: contractPaperworkKeys.list(propertyContractType),
+        queryFn: () => getPaperwork(propertyContractType),
+      })
+      .catch(() => undefined),
+    queryClient
+      .prefetchQuery({
+        queryKey: contractServicesPricingKeys.list(propertyContractType),
+        queryFn: () => getServicesPricing(propertyContractType),
+      })
+      .catch(() => undefined),
+    queryClient
+      .prefetchQuery({
+        queryKey: contractPaymentTypeKeys.list(propertyContractType),
+        queryFn: () => getPaymentTypes(propertyContractType),
+      })
+      .catch(() => undefined),
+    queryClient
+      .prefetchQuery({
+        queryKey: settingContractsKeys.list(),
+        queryFn: () => getSettingContracts(),
+      })
+      .catch(() => undefined),
+    queryClient
+      .prefetchQuery({
+        queryKey: meterFeeSettingsKeys.detail(),
+        queryFn: () => getMeterFeeSettings(),
+      })
+      .catch(() => undefined),
   ]);
 
   const labels: CreateContractLabels = {

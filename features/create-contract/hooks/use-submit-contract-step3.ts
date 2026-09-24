@@ -1,10 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { toast } from "sonner";
 
-import { submitContractStep3 } from "@/features/create-contract/services/submit-contract-step3";
 import { useCreateContractDraftStore } from "@/features/create-contract/stores/use-create-contract-draft-store";
 import type {
   AgentDataState,
@@ -23,19 +21,12 @@ export function useSubmitContractStep3() {
   const contractSession = useCreateContractDraftStore((state) => state.contractSession);
   const contractStep2Data = useCreateContractDraftStore((state) => state.contractStep2Data);
   const contractStep3Data = useCreateContractDraftStore((state) => state.contractStep3Data);
-  const setContractStep3Data = useCreateContractDraftStore(
-    (state) => state.setContractStep3Data,
-  );
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function submitStep3({
-    ownerData,
-    agentData,
-    representativeMode = null,
-  }: SubmitContractStep3Input): Promise<boolean> {
-    if (isSubmitting) {
-      return false;
-    }
+  async function submitStep3(
+    input: SubmitContractStep3Input,
+  ): Promise<boolean> {
+    // Data is captured into the client draft; the backend write is skipped.
+    void input;
 
     const contractId =
       contractSession?.contractId ??
@@ -47,30 +38,11 @@ export function useSubmitContractStep3() {
       return false;
     }
 
-    setIsSubmitting(true);
-
-    try {
-      const result = await submitContractStep3({
-        contractId,
-        ownerData,
-        agentData,
-        representativeMode,
-      });
-
-      if (!result.ok) {
-        toast.error(result.error || t("submitError"));
-        return false;
-      }
-
-      setContractStep3Data(result.data);
-      return true;
-    } finally {
-      setIsSubmitting(false);
-    }
+    return true;
   }
 
   return {
     submitStep3,
-    isSubmitting,
+    isSubmitting: false,
   };
 }

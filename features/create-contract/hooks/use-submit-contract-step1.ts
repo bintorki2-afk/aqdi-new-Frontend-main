@@ -1,14 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { toast } from "sonner";
 
-import { submitContractStep1 } from "@/features/create-contract/services/submit-contract-step1";
 import { useCreateContractDraftStore } from "@/features/create-contract/stores/use-create-contract-draft-store";
 import type { DeedTypeId } from "@/features/create-contract/types/deed-type";
 import { deedTypeIsLeaseRenewal } from "@/features/create-contract/types/deed-type";
-import { mapDeedTypeToInstrumentType } from "@/features/create-contract/utils/map-deed-type-to-instrument-type";
 import { mapInstrumentTypeToDeedType } from "@/features/create-contract/utils/map-instrument-type-to-deed-type";
 import { isManualDeedEntryComplete } from "@/features/shared/types/manual-deed-entry";
 import type { ManualDeedEntryData } from "@/features/shared/types/manual-deed-entry";
@@ -20,10 +17,6 @@ export function useSubmitContractStep1() {
   const isExistingPropertyContract = useCreateContractDraftStore(
     (state) => state.existingPropertyContext !== null,
   );
-  const setContractStep1Data = useCreateContractDraftStore(
-    (state) => state.setContractStep1Data,
-  );
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function submitStep1(
     selectedDeedType: DeedTypeId,
@@ -40,10 +33,6 @@ export function useSubmitContractStep1() {
       manualDeedEntry?: ManualDeedEntryData;
     },
   ): Promise<boolean> {
-    if (isSubmitting) {
-      return false;
-    }
-
     if (!contractSession) {
       toast.error(t("missingContractSession"));
       return false;
@@ -64,7 +53,6 @@ export function useSubmitContractStep1() {
         hasManualEntry,
     );
     const isLeaseRenewal = deedTypeIsLeaseRenewal(selectedDeedType);
-    const instrumentType = mapDeedTypeToInstrumentType(selectedDeedType);
     const minSubmittedStep = isLeaseRenewal ? 4 : 2;
     // The backend normalizes the enum it stores (e.g. "electronic"), so compare
     // through the deed-type mapping rather than the raw strings.
@@ -90,38 +78,11 @@ export function useSubmitContractStep1() {
       return true;
     }
 
-    setIsSubmitting(true);
-
-    try {
-      const result = await submitContractStep1({
-        contractId: contractSession.contractId,
-        instrumentType,
-        imageInstrument: files.instrument,
-        imageInstrumentFront: files.front,
-        imageInstrumentBack: files.back,
-        imageInheritanceCertificate: files.inheritance,
-        copyPowerOfAttorneyFromHeirsToAgent: files.heirsPoa,
-        copyOfTheEndowmentRegistrationCertificate: files.endowmentCert,
-        copyOfTheTrusteeshipDeed: files.trusteeship,
-        isMultipleTrusteeshipDeedCopy: files.isMultipleTrusteeshipDeedCopy,
-        copyOfGuardiansPowerOfAttorneyForAgent: files.guardiansPoa,
-        manualDeedEntry: hasManualEntry ? files.manualDeedEntry : undefined,
-      });
-
-      if (!result.ok) {
-        toast.error(result.error || t("submitError"));
-        return false;
-      }
-
-      setContractStep1Data(result.data);
-      return true;
-    } finally {
-      setIsSubmitting(false);
-    }
+    return true;
   }
 
   return {
     submitStep1,
-    isSubmitting,
+    isSubmitting: false,
   };
 }

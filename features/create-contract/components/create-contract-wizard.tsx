@@ -7,7 +7,7 @@ import CreateContractFinanceStep from "@/features/create-contract/components/cre
 import CreateContractHeader from "@/features/create-contract/components/create-contract-header";
 import CreateContractIntroStep from "@/features/create-contract/components/create-contract-intro-step";
 import CreateContractOwnerStep from "@/features/create-contract/components/create-contract-owner-step";
-import CreateContractPaymentStep from "@/features/create-contract/components/create-contract-payment-step";
+import CreateContractSubmitStep from "@/features/create-contract/components/create-contract-submit-step";
 import CreateContractTenantStep from "@/features/create-contract/components/create-contract-tenant-step";
 import CreateContractStepper from "@/features/create-contract/components/create-contract-stepper";
 import { useCreateContractSteps } from "@/features/create-contract/hooks/use-create-contract-steps";
@@ -144,9 +144,9 @@ export default function CreateContractWizard({
               ) : null}
 
               {currentStep === "payment" ? (
-                <CreateContractPaymentStep
-                  labels={labels.payment}
-                  saveLaterDialogLabels={labels.tenant.saveLaterDialog}
+                <CreateContractSubmitStep
+                  reviewLabels={labels.payment.reviewDialog}
+                  contractType={contractType}
                   deedTypeLabels={labels.deed.deedType.types}
                   deedAttachmentLabels={{
                     label: labels.deed.deedImage.label,
@@ -160,7 +160,6 @@ export default function CreateContractWizard({
                     guardiansPoaLabel: labels.deed.deedImage.guardiansPoaLabel,
                     deceasedDeedLabel: labels.deed.deceased.deedLabel,
                   }}
-                  contractType={contractType}
                   onBack={goBack}
                   onEditStep={goToStep}
                 />

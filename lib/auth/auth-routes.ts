@@ -9,7 +9,6 @@ export const GUEST_ONLY_ROUTES = [
 export const PROTECTED_ROUTE_PREFIXES = [
   "/properties",
   "/requests",
-  "/create-contract",
   "/notifications",
 ] as const;
 
