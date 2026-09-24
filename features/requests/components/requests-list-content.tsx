@@ -94,7 +94,7 @@ export default function RequestsListContent({
     <div className="space-y-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <header className="min-w-0 space-y-2">
-          <h1 className="text-3xl font-extrabold text-brand md:text-4xl dark:text-[#00a67e]">
+          <h1 className="text-3xl font-extrabold text-brand md:text-4xl dark:text-[#00a880]">
             {labels.pageTitle}
           </h1>
           <p className="max-w-2xl text-sm leading-7 text-[#7a7a7a] md:text-base dark:text-[#a3adac]">
@@ -103,7 +103,7 @@ export default function RequestsListContent({
         </header>
 
         <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center lg:w-auto">
-          <span className="inline-flex h-11 shrink-0 items-center rounded-full bg-brand-background-green px-3.5 text-sm font-bold text-brand dark:bg-[#0e312a] dark:text-[#00a67e]">
+          <span className="inline-flex h-11 shrink-0 items-center rounded-full bg-brand-background-green px-3.5 text-sm font-bold text-brand dark:bg-[#0e312a] dark:text-[#00a880]">
             {t("requestsCount", { count: filteredItems.length })}
           </span>
 

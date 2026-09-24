@@ -73,12 +73,12 @@ export default function CreateContractIntroStep({
   return (
     <div className="space-y-3 p-3 md:space-y-4 md:p-5">
       <div className="flex flex-col items-center gap-3 text-center">
-        <span className="mb-2 inline-flex text-brand dark:text-[#7dccc0]">
+        <span className="mb-2 inline-flex text-brand dark:text-[#48c0b8]">
           <Hand className="size-6" aria-hidden="true" />
         </span>
 
         <div className="space-y-2">
-          <h2 className="text-2xl font-extrabold text-brand md:text-3xl dark:text-[#7dccc0]">
+          <h2 className="text-2xl font-extrabold text-brand md:text-3xl dark:text-[#48c0b8]">
             {labels.title}
           </h2>
           <p className="text-sm text-[#7f7f7f] dark:text-[#9eb5af]">
@@ -134,12 +134,12 @@ export default function CreateContractIntroStep({
               {labels.priceLabel}
             </p>
 
-            <p className="flex items-center gap-1 text-xl font-extrabold text-brand dark:text-[#7dccc0]">
+            <p className="flex items-center gap-1 text-xl font-extrabold text-brand dark:text-[#48c0b8]">
               {price}
               <CustomIcon
                 src="/icons/ryal.svg"
                 size={24}
-                className="text-brand dark:text-[#7dccc0]"
+                className="text-brand dark:text-[#48c0b8]"
               />
             </p>
           </div>
@@ -149,7 +149,7 @@ export default function CreateContractIntroStep({
           <DialogTrigger asChild>
             <button
               type="button"
-              className="flex w-full cursor-pointer items-center justify-center gap-1 py-1 text-sm font-medium text-brand dark:text-[#7dccc0]"
+              className="flex w-full cursor-pointer items-center justify-center gap-1 py-1 text-sm font-medium text-brand dark:text-[#48c0b8]"
             >
               {labels.viewAllPrices}
               <ArrowUpLeft className="size-4" aria-hidden="true" />
@@ -199,12 +199,12 @@ export default function CreateContractIntroStep({
                     className="flex items-center justify-between gap-4 border-b border-[#ececec] pb-3 last:border-b-0 dark:border-[#2f403b]"
                   >
                     <span className="text-sm font-medium">{item.name}</span>
-                    <span className="flex shrink-0 items-center gap-1 font-bold text-brand dark:text-[#7dccc0]">
+                    <span className="flex shrink-0 items-center gap-1 font-bold text-brand dark:text-[#48c0b8]">
                       {item.price}
                       <CustomIcon
                         src="/icons/ryal.svg"
                         size={16}
-                        className="text-brand dark:text-[#7dccc0]"
+                        className="text-brand dark:text-[#48c0b8]"
                       />
                     </span>
                   </li>

@@ -83,12 +83,12 @@ export default function CreateContractFinancePaymentMethodSelect({
       {invalid ? <CreateContractFieldError message={t("fieldRequired")} /> : null}
 
       {note ? (
-        <div className="mt-3 flex items-start gap-2 rounded-2xl bg-[#eafffc] px-3.5 py-3 dark:!bg-[#2b2118]">
+        <div className="mt-3 flex items-start gap-2 rounded-2xl bg-[#e9fbf5] px-3.5 py-3 dark:!bg-[#2b2118]">
           <span
             className="mt-1.5 size-2 shrink-0 rounded-full bg-[#e39b2d]"
             aria-hidden="true"
           />
-          <p className="text-sm leading-6 font-medium text-[#0d5a50] dark:!text-[#cca352]">
+          <p className="text-sm leading-6 font-medium text-[#005848] dark:!text-[#cca352]">
             {note}
           </p>
         </div>

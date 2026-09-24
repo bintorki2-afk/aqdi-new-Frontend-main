@@ -221,7 +221,7 @@ function EditButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] bg-white px-3 py-1.5 text-xs font-bold text-brand shadow-sm transition-colors hover:bg-[#f7f7f7] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#7dccc0] dark:hover:bg-[#24302c]",
+        "inline-flex items-center gap-1.5 rounded-full border border-[#e5e5e5] bg-white px-3 py-1.5 text-xs font-bold text-brand shadow-sm transition-colors hover:bg-[#f7f7f7] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#48c0b8] dark:hover:bg-[#24302c]",
         className,
       )}
     >
@@ -244,7 +244,7 @@ function OverviewEditIcon({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="inline-flex cursor-pointer items-center justify-center rounded-lg text-brand dark:text-[#7dccc0]"
+      className="inline-flex cursor-pointer items-center justify-center rounded-lg text-brand dark:text-[#48c0b8]"
     >
       <Pencil className="size-3.5" aria-hidden="true" />
     </button>
@@ -263,7 +263,7 @@ function ExternalLinkPreview({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="inline-flex items-center gap-1.5 font-bold text-brand underline-offset-2 hover:underline dark:text-[#7dccc0]"
+      className="inline-flex items-center gap-1.5 font-bold text-brand underline-offset-2 hover:underline dark:text-[#48c0b8]"
     >
       <span>{label}</span>
       <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />
@@ -291,7 +291,7 @@ function ViewAttachmentButton({
           onPreview(preview);
         }
       }}
-      className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#eef6f3] px-3 py-1.5 text-xs font-bold text-brand transition-colors hover:bg-[#e3f0eb] dark:bg-[#16352f] dark:text-[#7dccc0] dark:hover:bg-[#1d453d]"
+      className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#eef6f3] px-3 py-1.5 text-xs font-bold text-brand transition-colors hover:bg-[#e3f0eb] dark:bg-[#16352f] dark:text-[#48c0b8] dark:hover:bg-[#1d453d]"
     >
       <Eye className="size-3.5" aria-hidden="true" />
       <span>{label}</span>
@@ -422,7 +422,7 @@ export default function CreateContractReviewOrderDialog({
           className="scrollbar-hide max-h-[min(92vh,900px)] gap-0 overflow-y-auto rounded-2xl border-0 bg-white p-4 sm:max-w-xl md:p-5 dark:bg-[#1a2421] dark:text-white"
         >
           <div className="relative mb-4 flex items-center justify-between">
-            <DialogTitle className="flex items-center justify-center gap-2 text-center text-[15px] font-extrabold text-brand md:text-base dark:text-[#7dccc0]">
+            <DialogTitle className="flex items-center justify-center gap-2 text-center text-[15px] font-extrabold text-brand md:text-base dark:text-[#48c0b8]">
               <Search className="size-4 shrink-0" aria-hidden="true" />
               <span>{labels.title}</span>
             </DialogTitle>
@@ -440,7 +440,7 @@ export default function CreateContractReviewOrderDialog({
 
           <div className="mb-4 grid grid-cols-2 gap-2 border-b border-[#ececec] pb-4 sm:grid-cols-4 dark:border-[#2f403b]">
             <div className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-[#dce8e3] bg-[#eef6f3] px-2 py-3 text-center dark:border-[#2f403b] dark:bg-[#16352f]">
-              <p className="text-lg font-extrabold leading-none text-brand md:text-xl dark:text-[#7dccc0]">
+              <p className="text-lg font-extrabold leading-none text-brand md:text-xl dark:text-[#48c0b8]">
                 {summary.contractUuid}
               </p>
               <p className="inline-flex items-center gap-1 text-[11px] font-medium text-[#6b7c76] dark:text-[#9eb5af]">
@@ -452,7 +452,7 @@ export default function CreateContractReviewOrderDialog({
             <button
               type="button"
               onClick={() => void handleShare()}
-              className="flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-[#e8e8e8] bg-white px-2 py-3 text-brand transition-colors hover:bg-[#fafafa] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#7dccc0] dark:hover:bg-[#24302c]"
+              className="flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-[#e8e8e8] bg-white px-2 py-3 text-brand transition-colors hover:bg-[#fafafa] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#48c0b8] dark:hover:bg-[#24302c]"
             >
               <Share2 className="size-4" aria-hidden="true" />
               <span className="text-xs font-bold">{labels.share}</span>
@@ -461,7 +461,7 @@ export default function CreateContractReviewOrderDialog({
             <button
               type="button"
               onClick={() => void handleCopy()}
-              className="flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-[#e8e8e8] bg-white px-2 py-3 text-brand transition-colors hover:bg-[#fafafa] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#7dccc0] dark:hover:bg-[#24302c]"
+              className="flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-[#e8e8e8] bg-white px-2 py-3 text-brand transition-colors hover:bg-[#fafafa] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#48c0b8] dark:hover:bg-[#24302c]"
             >
               <Copy className="size-4" aria-hidden="true" />
               <span className="text-xs font-bold">{labels.copy}</span>
@@ -470,7 +470,7 @@ export default function CreateContractReviewOrderDialog({
             <button
               type="button"
               onClick={handlePrint}
-              className="flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-[#e8e8e8] bg-white px-2 py-3 text-brand transition-colors hover:bg-[#fafafa] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#7dccc0] dark:hover:bg-[#24302c]"
+              className="flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-[#e8e8e8] bg-white px-2 py-3 text-brand transition-colors hover:bg-[#fafafa] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#48c0b8] dark:hover:bg-[#24302c]"
             >
               <Printer className="size-4" aria-hidden="true" />
               <span className="text-xs font-bold">{labels.print}</span>
@@ -496,7 +496,7 @@ export default function CreateContractReviewOrderDialog({
                     <p className="mb-1 text-xs font-bold text-[#8a8a8a] dark:text-[#9eb5af]">
                       {item.label}
                     </p>
-                    <p className="text-sm font-extrabold leading-tight text-brand dark:text-[#7dccc0]">
+                    <p className="text-sm font-extrabold leading-tight text-brand dark:text-[#48c0b8]">
                       {item.value}
                     </p>
                   </div>
@@ -545,7 +545,7 @@ export default function CreateContractReviewOrderDialog({
                   className="relative rounded-2xl border border-[#ececec] bg-gray-200/10 p-4 shadow-sm dark:border-[#2f403b] dark:bg-[#121a18] dark:shadow-none"
                 >
                   <div className="mb-3 flex items-start justify-between gap-3">
-                    <h3 className="text-sm font-extrabold text-brand dark:text-[#7dccc0]">
+                    <h3 className="text-sm font-extrabold text-brand dark:text-[#48c0b8]">
                       {section.title}
                     </h3>
                     <EditButton
@@ -746,7 +746,7 @@ export default function CreateContractReviewOrderDialog({
             ) : attachmentPreview ? (
               <div className="flex flex-col items-center gap-3 py-8 text-center">
                 <FileText
-                  className="size-12 text-[#b8b0d9] dark:text-[#7dccc0]"
+                  className="size-12 text-[#b8b0d9] dark:text-[#48c0b8]"
                   aria-hidden="true"
                 />
                 <p className="text-sm font-bold text-[#2b2b2b] dark:text-white">
@@ -756,7 +756,7 @@ export default function CreateContractReviewOrderDialog({
                   href={attachmentPreview.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm font-semibold text-brand underline-offset-2 hover:underline dark:text-[#7dccc0]"
+                  className="text-sm font-semibold text-brand underline-offset-2 hover:underline dark:text-[#48c0b8]"
                 >
                   {labels.view}
                 </a>

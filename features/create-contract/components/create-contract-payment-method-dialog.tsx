@@ -57,7 +57,7 @@ function FlowSteps({ steps }: { steps: string[] }) {
               className={cn(
                 "rounded-lg border px-2 py-1 text-[10px] font-bold leading-none sm:text-[11px]",
                 highlighted
-                  ? "border-brand/40 bg-[#e8f5ee] text-brand dark:border-[#2f403b] dark:bg-[#16352f] dark:text-[#7dccc0]"
+                  ? "border-brand/40 bg-[#e8f5ee] text-brand dark:border-[#2f403b] dark:bg-[#16352f] dark:text-[#48c0b8]"
                   : "border-[#e0e0e0] bg-white text-[#555] dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#9eb5af]",
               )}
             >
@@ -83,12 +83,12 @@ function RadioIndicator({ selected }: { selected: boolean }) {
       className={cn(
         "mt-1 flex size-5 shrink-0 items-center justify-center rounded-full border-2",
         selected
-          ? "border-brand dark:border-[#7dccc0]"
+          ? "border-brand dark:border-[#48c0b8]"
           : "border-[#cfcfcf] dark:border-[#5c6b68]",
       )}
     >
       {selected ? (
-        <span className="size-2.5 rounded-full bg-brand dark:bg-[#7dccc0]" />
+        <span className="size-2.5 rounded-full bg-brand dark:bg-[#48c0b8]" />
       ) : null}
     </span>
   );
@@ -116,7 +116,7 @@ function MethodPrice({
             {formatPaymentAmount(originalAmount)}
           </span>
         ) : null}
-        <span className="text-base font-extrabold text-brand dark:text-[#7dccc0]">
+        <span className="text-base font-extrabold text-brand dark:text-[#48c0b8]">
           {formatPaymentAmount(amount)} {currency}
         </span>
       </div>
@@ -218,13 +218,13 @@ export default function CreateContractPaymentMethodDialog({
               className={cn(
                 "w-full rounded-[22px] border-2 px-3.5 py-3.5 text-start transition-colors",
                 pendingMethod === "pay-now"
-                  ? "border-brand bg-[#f7fcf9] dark:border-[#7dccc0] dark:bg-[#16352f]"
+                  ? "border-brand bg-[#f7fcf9] dark:border-[#48c0b8] dark:bg-[#16352f]"
                   : "border-[#e8e8e8] bg-white hover:border-[#d5d5d5] dark:border-[#2f403b] dark:bg-[#121a18] dark:hover:border-[#3d524c]",
                 "disabled:cursor-not-allowed disabled:opacity-60",
               )}
             >
               <div className="flex items-start gap-3">
-                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl border border-[#e0e0e0] bg-white text-brand dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#7dccc0]">
+                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl border border-[#e0e0e0] bg-white text-brand dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#48c0b8]">
                   <CreditCard className="size-5" aria-hidden="true" />
                 </span>
 
@@ -287,13 +287,13 @@ export default function CreateContractPaymentMethodDialog({
             className={cn(
               "w-full rounded-[22px] border-2 px-3.5 py-3.5 text-start transition-colors",
               pendingMethod === "draft"
-                ? "border-brand bg-[#f7fcf9] dark:border-[#7dccc0] dark:bg-[#16352f]"
+                ? "border-brand bg-[#f7fcf9] dark:border-[#48c0b8] dark:bg-[#16352f]"
                 : "border-[#e8e8e8] bg-white hover:border-[#d5d5d5] dark:border-[#2f403b] dark:bg-[#121a18] dark:hover:border-[#3d524c]",
               "disabled:cursor-not-allowed disabled:opacity-60",
             )}
           >
             <div className="flex items-start gap-3">
-              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl border border-[#e0e0e0] bg-white text-brand dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#7dccc0]">
+              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl border border-[#e0e0e0] bg-white text-brand dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#48c0b8]">
                 <ClipboardList className="size-5" aria-hidden="true" />
               </span>
 
@@ -339,7 +339,7 @@ export default function CreateContractPaymentMethodDialog({
         ) : null}
 
         <div className="mt-4 rounded-2xl bg-[#eef8f3] px-4 py-3 text-[11px] leading-relaxed text-[#35584a] dark:bg-[#0f2a24] dark:text-[#9eb5af]">
-          <span className="font-extrabold dark:text-[#7dccc0]">
+          <span className="font-extrabold dark:text-[#48c0b8]">
             {labels.footerNoteTitle}
           </span>{" "}
           <span>{labels.footerNote}</span>

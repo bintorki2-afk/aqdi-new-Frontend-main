@@ -135,7 +135,7 @@
   --card-foreground: #ffffff;
   --popover: #1a2421;
   --popover-foreground: #ffffff;
-  --primary: #00a67e;
+  --primary: #00a880;
   --primary-foreground: #ffffff;
   --secondary: #1a2221;
   --secondary-foreground: #ffffff;
@@ -146,7 +146,7 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: #262d2c;
   --input: #0d1614;
-  --ring: #00a67e;
+  --ring: #00a880;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -154,12 +154,12 @@
   --chart-5: oklch(0.269 0 0);
   --sidebar: #151c1b;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #00a67e;
+  --sidebar-primary: #00a880;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #1a2221;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #262d2c;
-  --sidebar-ring: #00a67e;
+  --sidebar-ring: #00a880;
 }
 
 @layer base {
@@ -175,10 +175,10 @@
 }
 
 @theme {
-  --color-brand: #0d5a50;
-  --color-brand-secondary: #0db38b;
+  --color-brand: #005848;
+  --color-brand-secondary: #00a880;
   --color-brand-background: #f5f5f5;
-  --color-brand-background-green: #eafffc;
+  --color-brand-background-green: #e9fbf5;
 
   /* ====== Screens' sizes like bootstrap ====== */
   --breakpoint-sm: 576px;
@@ -361,7 +361,7 @@
   height: 20px;
   border: 2px solid #ffffff;
   border-radius: 9999px;
-  background: #0db38b;
+  background: #00a880;
   box-shadow: 0 0 0 4px rgb(13 179 139 / 25%);
 }
 
@@ -420,7 +420,7 @@
 .create-property-flow.dark .text-brand,
 .create-contract-flow.dark .text-brand,
 .create-flow-dark.dark .text-brand {
-  color: #7dccc0 !important;
+  color: #48c0b8 !important;
 }
 
 .create-property-dark-shell.dark .text-\[\#7f7f7f\],
@@ -627,8 +627,8 @@
 
 /* Requests / services dark palette — match product dark mock */
 .services-dark-shell.dark {
-  --color-brand: #00a67e;
-  --color-brand-secondary: #00a67e;
+  --color-brand: #00a880;
+  --color-brand-secondary: #00a880;
   --color-brand-background: #0d1413;
   --color-brand-background-green: #0e312a;
   background-color: #0d1413;
@@ -647,11 +647,11 @@
 }
 
 .services-dark-shell.dark .bg-brand {
-  background-color: #00a67e !important;
+  background-color: #00a880 !important;
 }
 
 .services-dark-shell.dark .text-brand {
-  color: #00a67e !important;
+  color: #00a880 !important;
 }
 
 .services-dark-shell.dark .text-\[\#7f7f7f\],
@@ -719,7 +719,7 @@
 }
 
 .services-dark-shell.dark .bg-\[\#e8f8ee\] {
-  background-color: #00a67e !important;
+  background-color: #00a880 !important;
 }
 
 .services-dark-shell.dark .text-\[\#25D366\] {
@@ -866,7 +866,7 @@ html.dark [data-slot="alert-dialog-content"] .text-muted-foreground {
 
 html.dark [data-slot="dialog-content"] .text-brand,
 html.dark [data-slot="alert-dialog-content"] .text-brand {
-  color: #7dccc0 !important;
+  color: #48c0b8 !important;
 }
 
 html.dark [data-slot="dialog-content"] .border-\[\#e8e8e8\],

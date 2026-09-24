@@ -29,14 +29,14 @@ function getStepPillClassName(
   return cn(
     stepPillClassName,
     completed
-      ? "cursor-default bg-brand-background-green text-brand dark:bg-[#16352f] dark:text-[#7dccc0]"
+      ? "cursor-default bg-brand-background-green text-brand dark:bg-[#16352f] dark:text-[#48c0b8]"
       : isUnlocked
         ? "cursor-pointer hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-secondary/30"
         : "cursor-not-allowed opacity-50",
     !completed &&
       (isActive
-        ? "bg-brand text-white shadow-[0_0_0_2px_#ffffff,0_0_0_4px_#0db38b] dark:shadow-[0_0_0_2px_#1a2421,0_0_0_4px_#0db38b] sm:shadow-none sm:ring-2 sm:ring-brand-secondary sm:ring-offset-2"
-        : "bg-brand-background-green text-brand dark:bg-[#16352f] dark:text-[#7dccc0]"),
+        ? "bg-brand text-white shadow-[0_0_0_2px_#ffffff,0_0_0_4px_#00a880] dark:shadow-[0_0_0_2px_#1a2421,0_0_0_4px_#00a880] sm:shadow-none sm:ring-2 sm:ring-brand-secondary sm:ring-offset-2"
+        : "bg-brand-background-green text-brand dark:bg-[#16352f] dark:text-[#48c0b8]"),
   );
 }
 
@@ -69,7 +69,7 @@ export default function CreatePropertyStepper({
       <div className="flex w-full min-w-0 items-center gap-0.5 py-0.5 sm:justify-evenly sm:gap-2">
         {completed ? (
           <>
-            <span className="inline-flex h-8 max-w-[4.5rem] shrink-0 items-center gap-0.5 rounded-full border border-brand/15 bg-white px-1.5 text-[10px] font-semibold text-brand shadow-sm sm:h-12 sm:max-w-none sm:gap-1.5 sm:px-3 sm:text-sm dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#7dccc0]">
+            <span className="inline-flex h-8 max-w-[4.5rem] shrink-0 items-center gap-0.5 rounded-full border border-brand/15 bg-white px-1.5 text-[10px] font-semibold text-brand shadow-sm sm:h-12 sm:max-w-none sm:gap-1.5 sm:px-3 sm:text-sm dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#48c0b8]">
               <Image
                 src="/images/logo.png"
                 alt=""
@@ -133,7 +133,7 @@ export default function CreatePropertyStepper({
           title={labels.saveAlt}
           aria-label={labels.saveAlt}
           className={cn(
-            "inline-flex size-8 shrink-0 items-center justify-center rounded-full border-2 text-brand sm:size-12 dark:text-[#7dccc0]",
+            "inline-flex size-8 shrink-0 items-center justify-center rounded-full border-2 text-brand sm:size-12 dark:text-[#48c0b8]",
             completed
               ? "border-brand bg-brand-background-green dark:border-brand-secondary dark:bg-[#16352f]"
               : "border-dashed border-brand/40 bg-white dark:border-brand-secondary/50 dark:bg-[#16352f]",
@@ -152,7 +152,7 @@ export default function CreatePropertyStepper({
           aria-hidden="true"
           className="h-auto min-w-0 flex-1 object-contain object-right dark:opacity-70"
         />
-        <p className="max-w-[55%] shrink-0 truncate text-center text-[10px] font-medium text-brand sm:max-w-none sm:text-xs md:text-sm dark:text-[#7dccc0]">
+        <p className="max-w-[55%] shrink-0 truncate text-center text-[10px] font-medium text-brand sm:max-w-none sm:text-xs md:text-sm dark:text-[#48c0b8]">
           {labels.journey}
         </p>
         <Image

@@ -268,7 +268,7 @@ export default function CreateContractPaymentStep({
           {selectedMethod ? (
             <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#cfe8dd] bg-[#f5fbf8] px-4 py-3 dark:border-[#2f403b] dark:bg-[#16352f]">
               <div className="min-w-0 space-y-0.5">
-                <p className="text-sm font-extrabold text-brand dark:text-[#7dccc0]">
+                <p className="text-sm font-extrabold text-brand dark:text-[#48c0b8]">
                   {selectedMethod === "draft"
                     ? labels.methodDialog.selected.draft.title
                     : labels.methodDialog.selected.payNow.title}
@@ -287,7 +287,7 @@ export default function CreateContractPaymentStep({
               <button
                 type="button"
                 onClick={paymentFlow.openMethodDialog}
-                className="shrink-0 text-xs font-bold text-brand underline underline-offset-2 transition-opacity hover:opacity-70 dark:text-[#7dccc0]"
+                className="shrink-0 text-xs font-bold text-brand underline underline-offset-2 transition-opacity hover:opacity-70 dark:text-[#48c0b8]"
               >
                 {labels.methodDialog.changeMethod}
               </button>
@@ -297,7 +297,7 @@ export default function CreateContractPaymentStep({
           <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#e8e8e8] bg-white px-4 py-4 dark:border-[#2f403b] dark:bg-[#121a18]">
             <label className="flex w-full cursor-pointer items-center justify-between gap-3">
               <span className="flex flex-col gap-1">
-                <span className="text-sm font-semibold leading-relaxed text-brand dark:text-[#7dccc0]">
+                <span className="text-sm font-semibold leading-relaxed text-brand dark:text-[#48c0b8]">
                   {labels.savePropertyData.label}
                 </span>
                 <span className="text-xs leading-relaxed text-[#7f7f7f] dark:text-[#9eb5af]">
@@ -337,7 +337,7 @@ export default function CreateContractPaymentStep({
             <button
               type="button"
               onClick={() => setLegalDocument("terms")}
-              className="font-semibold text-brand-secondary underline underline-offset-2 dark:text-[#7dccc0]"
+              className="font-semibold text-brand-secondary underline underline-offset-2 dark:text-[#48c0b8]"
             >
               {labels.disclaimer.termsLink}
             </button>{" "}
@@ -345,7 +345,7 @@ export default function CreateContractPaymentStep({
             <button
               type="button"
               onClick={() => setLegalDocument("privacy")}
-              className="font-semibold text-brand-secondary underline underline-offset-2 dark:text-[#7dccc0]"
+              className="font-semibold text-brand-secondary underline underline-offset-2 dark:text-[#48c0b8]"
             >
               {labels.disclaimer.privacyLink}
             </button>

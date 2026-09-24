@@ -39,7 +39,7 @@ export default function CreatePropertyHeader({
           aria-label={labels.home}
           className={cn(
             iconButtonClassName,
-            "bg-brand-background-green text-brand hover:bg-brand-background-green/80 dark:bg-[#16352f] dark:text-[#7dccc0] dark:hover:bg-[#1c4039]",
+            "bg-brand-background-green text-brand hover:bg-brand-background-green/80 dark:bg-[#16352f] dark:text-[#48c0b8] dark:hover:bg-[#1c4039]",
           )}
         >
           <Home className="size-4 shrink-0" aria-hidden="true" />

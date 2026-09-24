@@ -138,14 +138,14 @@ function TotalRow({
   amount: number;
 }) {
   return (
-    <div className="border-t border-[#1a5c4a] pt-3 dark:border-[#7dccc0]">
+    <div className="border-t border-[#1a5c4a] pt-3 dark:border-[#48c0b8]">
       <div className="flex items-center justify-between gap-4">
-        <span className="text-base font-extrabold text-brand dark:text-[#7dccc0]">
+        <span className="text-base font-extrabold text-brand dark:text-[#48c0b8]">
           {label}
         </span>
         <PaymentAmount
           amount={amount}
-          className="text-xl font-extrabold text-brand! dark:text-[#7dccc0]!"
+          className="text-xl font-extrabold text-brand! dark:text-[#48c0b8]!"
           iconClassName="text-brand"
           iconSize={22}
         />
@@ -170,7 +170,7 @@ export default function CreateContractFinancialBreakdown({
       <BreakdownShell sectionTitle={sectionTitle}>
         <SummarySkeletonRow />
         <SummarySkeletonRow />
-        <div className="border-t border-[#1a5c4a] pt-3 dark:border-[#7dccc0]">
+        <div className="border-t border-[#1a5c4a] pt-3 dark:border-[#48c0b8]">
           <SummarySkeletonRow />
         </div>
       </BreakdownShell>

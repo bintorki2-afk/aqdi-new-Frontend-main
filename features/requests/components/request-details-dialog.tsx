@@ -124,7 +124,7 @@ export default function RequestDetailsDialog({
 
               return (
                 <section key={section.title} className="space-y-2">
-                  <h3 className="text-sm font-extrabold text-brand dark:text-[#7dccc0]">
+                  <h3 className="text-sm font-extrabold text-brand dark:text-[#48c0b8]">
                     {section.title}
                   </h3>
                   <div className="overflow-hidden rounded-2xl bg-[#f7f7f7] dark:bg-[#121a18]">

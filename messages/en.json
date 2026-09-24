@@ -1,10 +1,10 @@
 {
   "site": {
-    "metaTitle": "Aqadi | Electronic Rental Contract Documentation",
-    "metaDescription": "Aqadi helps you document residential and commercial rental contracts electronically through the Ejar network — quickly, securely, and in a way that protects all parties.",
+    "metaTitle": "Rental Contract | Electronic Lease Documentation",
+    "metaDescription": "Rental Contract helps you document residential and commercial rental contracts electronically through the Ejar network — quickly, securely, and in a way that protects all parties.",
     "homeTitle": "Home",
     "aboutTitle": "About us",
-    "aboutDescription": "Learn about Aqadi, our vision, mission, and values for documenting electronic rental contracts."
+    "aboutDescription": "Learn about Rental Contract, our vision, mission, and values for documenting electronic rental contracts."
   },
   "navbar": {
     "topBar": {
@@ -18,7 +18,7 @@
       "whatsappService": "Enjoy contract documentation service via WhatsApp"
     },
     "brand": {
-      "name": "Aqadi",
+      "name": "Rental Contract",
       "tagline": "For a flourishing rental sector"
     },
     "nav": {
@@ -27,7 +27,7 @@
       "requests": "My requests",
       "downloadApp": "Download the app now"
     },
-    "cta": "Start with Aqadi",
+    "cta": "Start with Rental Contract",
     "profile": "Profile",
     "menu": "Menu",
     "myAccount": "My Account",
@@ -100,7 +100,7 @@
     "googlePlay": "Google Play",
     "appStore": "Apple Store",
     "whatsapp": "Contact via WhatsApp",
-    "visualAlt": "Aqadi app showing a successfully issued lease contract"
+    "visualAlt": "Rental Contract app showing a successfully issued lease contract"
   },
   "trustedEntities": {
     "badge": "Trusted and certified entities",
@@ -128,7 +128,7 @@
   },
   "services": {
     "title": "Our Services",
-    "description": "Use the Aqdi app to document your residential and commercial contracts easily and securely.",
+    "description": "Use the Rental Contract app to document your residential and commercial contracts easily and securely.",
     "downloadLabel": "Download the app now",
     "downloadOnThe": "Download On The",
     "googlePlay": "Google Play",
@@ -160,7 +160,7 @@
   "advantages": {
     "badge": "Our advantages",
     "titlePrefix": "Why ",
-    "titleAccent": "Aqadi",
+    "titleAccent": "Rental Contract",
     "titleSuffix": " !",
     "description": "Your documented contract via the Ejar network and the Real Estate General Authority in minutes.",
     "items": {
@@ -228,14 +228,14 @@
     "cta": "Contact via WhatsApp",
     "satisfaction": "⭐ 98% customer satisfaction",
     "responseTime": "Reply within 5 minutes",
-    "imageAlt": "Aqadi WhatsApp support chat interface"
+    "imageAlt": "Rental Contract WhatsApp support chat interface"
   },
   "appSection": {
     "eyebrow": "Mobile App",
     "titleLine1": "Document your contracts",
     "titleLine2": "from your smartphone",
-    "description": "Download the Aqadi app and complete all your rental transactions from anywhere with an easy interface, instant notifications, and a seamless experience.",
-    "imageAlt": "A showcase of Aqadi mobile app screens"
+    "description": "Download the Rental Contract app and complete all your rental transactions from anywhere with an easy interface, instant notifications, and a seamless experience.",
+    "imageAlt": "A showcase of Rental Contract mobile app screens"
   },
   "about": {
     "whoWeAre": {
@@ -269,23 +269,23 @@
     },
     "values": {
       "title": "Everything you need to know",
-      "description": "You can use the \"Aqadi\" platform to document your residential and commercial contracts with ease.",
+      "description": "You can use the \"Rental Contract\" platform to document your residential and commercial contracts with ease.",
       "vision": {
         "eyebrow": "Vision",
         "title": "Our vision..",
         "description": "To be the first choice in the real estate facilities sector and contribute to achieving Saudi Vision 2030 goals.",
-        "imageAlt": "Image representing Aqadi vision"
+        "imageAlt": "Image representing Rental Contract vision"
       },
       "mission": {
         "eyebrow": "Mission",
         "title": "Our mission",
         "description": "We provide trusted solutions focused on efficiency and effectiveness, while being a key factor in the success of our partners and employees.",
-        "imageAlt": "Image representing Aqadi mission"
+        "imageAlt": "Image representing Rental Contract mission"
       }
     },
     "coreValues": {
       "badge": "Our values",
-      "title": "Aqadi values",
+      "title": "Rental Contract values",
       "description": "Ejar aims to regulate the real estate rental sector in Saudi Arabia in a balanced way that protects the rights of all parties in the rental process.",
       "items": [
         {
@@ -396,7 +396,7 @@
       "saturdayHours": "Saturday from 9:00 AM to 2:00 PM",
       "email": "info@aqdi.sa"
     },
-    "copyright": "All rights reserved Aqadi 2024 ©",
+    "copyright": "All rights reserved Rental Contract {year} ©",
     "terms": "Terms and Conditions",
     "privacy": "Privacy Policy",
     "termsHref": "/terms",
@@ -406,14 +406,14 @@
     "close": "Close",
     "terms": {
       "title": "Terms and Conditions",
-      "metaTitle": "Terms and Conditions | Aqadi",
-      "metaDescription": "Read the terms and conditions for using Aqadi electronic lease documentation platform.",
+      "metaTitle": "Terms and Conditions",
+      "metaDescription": "Read the terms and conditions for using Rental Contract electronic lease documentation platform.",
       "empty": "Terms and conditions are not available at the moment."
     },
     "privacy": {
       "title": "Privacy Policy",
-      "metaTitle": "Privacy Policy | Aqadi",
-      "metaDescription": "Read Aqadi privacy policy and how we protect your data.",
+      "metaTitle": "Privacy Policy",
+      "metaDescription": "Read Rental Contract privacy policy and how we protect your data.",
       "empty": "Privacy policy is not available at the moment."
     }
   },
@@ -426,8 +426,8 @@
     "empty": "No questions are available at the moment."
   },
   "notificationsPage": {
-    "metaTitle": "Notifications | Aqadi",
-    "metaDescription": "View your Aqadi notifications and contract status alerts.",
+    "metaTitle": "Notifications",
+    "metaDescription": "View your Rental Contract notifications and contract status alerts.",
     "title": "Notifications",
     "subtitle": "Contract status alerts and notifications for your account.",
     "emptyTitle": "No notifications yet",
@@ -466,11 +466,11 @@
       },
       "sidebar": {
         "stats": {
-          "title": "Aqadi Blog",
+          "title": "Rental Contract Blog",
           "subtitle": "Your comprehensive real estate platform",
           "description": "We share with you the latest articles and tips in real estate, asset management, and creating professional contracts.",
           "statsHeading": "Ejar in numbers:",
-          "logoAlt": "Aqadi logo",
+          "logoAlt": "Rental Contract logo",
           "activeUsers": "+5M",
           "activeUsersLabel": "Active users",
           "annualContracts": "+2M",
@@ -521,7 +521,7 @@
           "title": "Weekly newsletter",
           "description": "The latest real estate articles and tips directly to your inbox.",
           "placeholder": "Write your email here..",
-          "subscribe": "Subscribe now with Aqadi",
+          "subscribe": "Subscribe now with Rental Contract",
           "submitEmailLabel": "Submit email"
         }
       },
@@ -637,7 +637,7 @@
   },
   "auth": {
     "hero": {
-      "imageAlt": "Aqadi app showing a successfully issued lease contract"
+      "imageAlt": "Rental Contract app showing a successfully issued lease contract"
     },
     "login": {
       "back": "Back to home",
@@ -1029,7 +1029,7 @@
         "close": "Close",
         "loading": "Loading invoice...",
         "retry": "Retry",
-        "platformName": "Aqdi",
+        "platformName": "Rental Contract",
         "platformSubtitle": "Rental contract documentation platform",
         "customerLabel": "Customer",
         "requestNumberLabel": "Request number",
@@ -1182,7 +1182,7 @@
     "stepper": {
       "journey": "Your rental journey just got easier.",
       "saveAlt": "Save",
-      "brand": "Aqdi",
+      "brand": "Rental Contract",
       "steps": {
         "deed": "Deed",
         "owner": "Owner",
@@ -2580,7 +2580,7 @@
         "copySuccess": "Order number copied",
         "copyError": "Could not copy the order number",
         "preparationDescription": "Our team will prepare the contract draft and send it to you via WhatsApp for review",
-        "whatsappCta": "Aqdi team is happy to hear from you",
+        "whatsappCta": "Rental Contract team is happy to hear from you",
         "whatsappHref": "https://wa.me/"
       }
     }
@@ -2614,17 +2614,17 @@
   },
   "startWithAqdi": {
     "dialog": {
-      "title": "Start with Aqadi",
+      "title": "Start with Rental Contract",
       "close": "Close",
       "mainTitle": "Electronic rental contract from the Ejar platform",
       "subtitle": "Now conclude your certified contract yourself through Ejar and the Real Estate General Authority.",
       "ejarLogoAlt": "Ejar logo",
-      "aqdiLogoAlt": "Aqadi logo",
+      "aqdiLogoAlt": "Rental Contract logo",
       "divider": "Choose the contract type to continue",
       "continue": "Continue",
       "newContract": {
         "title": "Create a rental contract",
-        "description": "Create a rental contract for a property not previously saved on the Aqadi platform.",
+        "description": "Create a rental contract for a property not previously saved on the Rental Contract platform.",
         "imageAlt": "Create a new rental contract"
       },
       "estateContract": {

@@ -47,7 +47,7 @@ export default function ServicesSideBackNav() {
   function renderBackControl() {
     const className = cn(
       pillBaseClassName,
-      "bg-brand-background-green text-brand hover:bg-brand-background-green/80 dark:bg-[#0e312a] dark:text-[#00a67e] dark:hover:bg-[#124038]",
+      "bg-brand-background-green text-brand hover:bg-brand-background-green/80 dark:bg-[#0e312a] dark:text-[#00a880] dark:hover:bg-[#124038]",
     );
 
     const icon = isHomeLink ? (
@@ -102,7 +102,7 @@ export default function ServicesSideBackNav() {
         {hasTrailing ? (
           <div className="flex min-w-0 flex-wrap items-center gap-2">
             {pageMeta.pageBadge ? (
-              <span className="truncate text-xs font-semibold text-brand sm:text-sm dark:text-[#00a67e]">
+              <span className="truncate text-xs font-semibold text-brand sm:text-sm dark:text-[#00a880]">
                 {pageMeta.pageBadge}
               </span>
             ) : null}
@@ -130,7 +130,7 @@ export default function ServicesSideBackNav() {
             pillBaseClassName,
             "ms-auto border border-[#e4e4e4] bg-white text-brand hover:bg-brand-background",
             isDarkMode &&
-              "border-[#00a67e] bg-[#00a67e] text-white hover:bg-[#00a67e]/90",
+              "border-[#00a880] bg-[#00a880] text-white hover:bg-[#00a880]/90",
           )}
         >
           {isDarkMode ? (

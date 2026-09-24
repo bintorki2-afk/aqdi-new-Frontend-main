@@ -68,7 +68,7 @@ export default async function Footer() {
         </div>
 
         <FooterBottomBar
-          copyright={t("copyright")}
+          copyright={t("copyright", { year: String(new Date().getFullYear()) })}
           terms={t("terms")}
           privacy={t("privacy")}
           termsHref={t("termsHref")}

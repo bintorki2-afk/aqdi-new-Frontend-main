@@ -127,7 +127,7 @@ function ExistingFileRow({
             />
           </button>
         ) : (
-          <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-bold text-brand dark:text-[#7dccc0]">
+          <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-bold text-brand dark:text-[#48c0b8]">
             <Check className="size-4 shrink-0" aria-hidden="true" />
             <span>{labels.attached}</span>
           </span>
@@ -142,7 +142,7 @@ function ExistingFileRow({
         <button
           type="button"
           onClick={handlePreview}
-          className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#e7f4ef] px-3 text-sm font-bold text-brand dark:bg-[#0f2a24] dark:text-[#7dccc0]"
+          className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#e7f4ef] px-3 text-sm font-bold text-brand dark:bg-[#0f2a24] dark:text-[#48c0b8]"
         >
           <Eye className="size-4 shrink-0" aria-hidden="true" />
           <span>{labels.preview}</span>
@@ -151,7 +151,7 @@ function ExistingFileRow({
         <button
           type="button"
           onClick={onChangeFile}
-          className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#e7f4ef] px-3 text-sm font-bold text-brand dark:bg-[#0f2a24] dark:text-[#7dccc0]"
+          className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#e7f4ef] px-3 text-sm font-bold text-brand dark:bg-[#0f2a24] dark:text-[#48c0b8]"
         >
           <RefreshCw className="size-4 shrink-0" aria-hidden="true" />
           <span>{labels.change}</span>
@@ -222,7 +222,7 @@ function DeedFileRow({ file, labels, onDelete, onPreview }: DeedFileRowProps) {
             />
           </button>
         ) : (
-          <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-bold text-brand dark:text-[#7dccc0]">
+          <span className="inline-flex shrink-0 items-center gap-1.5 text-sm font-bold text-brand dark:text-[#48c0b8]">
             <Check className="size-4 shrink-0" aria-hidden="true" />
             <span>{labels.attached}</span>
           </span>
@@ -238,7 +238,7 @@ function DeedFileRow({ file, labels, onDelete, onPreview }: DeedFileRowProps) {
         <button
           type="button"
           onClick={handlePreview}
-          className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#e7f4ef] px-3 text-sm font-bold text-brand dark:bg-[#0f2a24] dark:text-[#7dccc0]"
+          className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#e7f4ef] px-3 text-sm font-bold text-brand dark:bg-[#0f2a24] dark:text-[#48c0b8]"
         >
           <Eye className="size-4 shrink-0" aria-hidden="true" />
           <span>{labels.preview}</span>
@@ -363,8 +363,8 @@ export default function CreatePropertyDeedImageUpload({
           className={cn(
             "flex w-full cursor-pointer items-center gap-3 transition-colors",
             variant === "dashed" || variant === "dropzone"
-              ? "min-h-10 flex-col justify-center rounded-2xl border-[1.5px] border-dashed bg-[#FBFDFC] px-3 py-2 text-center hover:border-brand/40 dark:bg-[#121a18] dark:hover:border-[#7dccc0]/40"
-              : "h-10 rounded-full border-[1.5px] border-dashed bg-[#FBFDFC] px-2 ps-4 hover:border-brand/40 dark:bg-[#121a18] dark:hover:border-[#7dccc0]/40",
+              ? "min-h-10 flex-col justify-center rounded-2xl border-[1.5px] border-dashed bg-[#FBFDFC] px-3 py-2 text-center hover:border-brand/40 dark:bg-[#121a18] dark:hover:border-[#48c0b8]/40"
+              : "h-10 rounded-full border-[1.5px] border-dashed bg-[#FBFDFC] px-2 ps-4 hover:border-brand/40 dark:bg-[#121a18] dark:hover:border-[#48c0b8]/40",
             showInvalid
               ? "border-[#e57373]"
               : "border-[#BFE0D4] dark:border-[#2f403b]",
@@ -373,7 +373,7 @@ export default function CreatePropertyDeedImageUpload({
           {variant === "dropzone" || variant === "dashed" ? (
             <div className="space-y-1">
               <p className="text-sm font-medium text-[#666666] dark:text-[#9eb5af]">
-                <span className="font-bold text-brand dark:text-[#7dccc0]">
+                <span className="font-bold text-brand dark:text-[#48c0b8]">
                   {labels.clickHere}
                 </span>{" "}
                 <span>{labels.chooseFile}</span>
@@ -388,7 +388,7 @@ export default function CreatePropertyDeedImageUpload({
             <>
               <div className="min-w-0 flex-1 text-start">
                 <p className="text-sm leading-snug font-semibold">
-                  <span className="text-brand-secondary dark:text-[#7dccc0]">
+                  <span className="text-brand-secondary dark:text-[#48c0b8]">
                     {labels.clickHere}
                   </span>{" "}
                   <span className="text-gray-600 dark:text-[#9eb5af]">

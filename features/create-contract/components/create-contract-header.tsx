@@ -125,7 +125,7 @@ export default function CreateContractHeader({
           aria-label={labels.home}
           className={cn(
             iconButtonClassName,
-            "bg-brand-background-green text-brand hover:bg-brand-background-green/80 dark:bg-[#16352f] dark:text-[#7dccc0] dark:hover:bg-[#1c4039]",
+            "bg-brand-background-green text-brand hover:bg-brand-background-green/80 dark:bg-[#16352f] dark:text-[#48c0b8] dark:hover:bg-[#1c4039]",
           )}
         >
           <Home className="size-4 shrink-0" aria-hidden />
@@ -143,7 +143,7 @@ export default function CreateContractHeader({
           <button
             type="button"
             onClick={() => void handleCopyRequest()}
-            className="inline-flex h-10 min-w-0 max-w-[8.5rem] flex-1 items-center gap-1.5 rounded-full border border-[#e4e4e4] bg-white px-2.5 text-xs font-bold text-brand transition-colors hover:bg-brand-background sm:h-11 sm:max-w-[14rem] sm:flex-none sm:gap-2 sm:px-4 sm:text-sm dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#7dccc0] dark:hover:bg-[#16352f]"
+            className="inline-flex h-10 min-w-0 max-w-[8.5rem] flex-1 items-center gap-1.5 rounded-full border border-[#e4e4e4] bg-white px-2.5 text-xs font-bold text-brand transition-colors hover:bg-brand-background sm:h-11 sm:max-w-[14rem] sm:flex-none sm:gap-2 sm:px-4 sm:text-sm dark:border-[#2f403b] dark:bg-[#121a18] dark:text-[#48c0b8] dark:hover:bg-[#16352f]"
           >
             <Copy className="size-3.5 shrink-0 sm:size-4" aria-hidden />
             <span className="truncate">

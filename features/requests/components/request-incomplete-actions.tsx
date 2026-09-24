@@ -52,7 +52,7 @@ export default function RequestIncompleteActions({
           label={completeLabel}
           errorLabel={editErrorLabel}
           showIcon={false}
-          className="rounded-2xl bg-brand px-5 text-white hover:bg-brand/90 hover:text-white dark:bg-[#00a67e] dark:hover:bg-[#00a67e]/90"
+          className="rounded-2xl bg-brand px-5 text-white hover:bg-brand/90 hover:text-white dark:bg-[#00a880] dark:hover:bg-[#00a880]/90"
         />
       </div>
 

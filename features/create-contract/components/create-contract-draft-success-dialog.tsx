@@ -61,10 +61,10 @@ export default function CreateContractDraftSuccessDialog({
           <CustomIcon
             src="/icons/shiled-check.svg"
             size={72}
-            className="text-brand-secondary dark:text-[#7dccc0]"
+            className="text-brand-secondary dark:text-[#48c0b8]"
           />
 
-          <p className="text-xl font-extrabold leading-relaxed text-brand md:text-2xl dark:text-[#7dccc0]">
+          <p className="text-xl font-extrabold leading-relaxed text-brand md:text-2xl dark:text-[#48c0b8]">
             {labels.title}
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function CreateContractDraftSuccessDialog({
               size="sm"
               onClick={() => void handleCopy()}
               disabled={!orderUuid?.trim()}
-              className="h-9 shrink-0 rounded-full border-brand/20 bg-white px-3 text-xs font-semibold text-brand hover:bg-brand-background dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#7dccc0] dark:hover:bg-[#24302c]"
+              className="h-9 shrink-0 rounded-full border-brand/20 bg-white px-3 text-xs font-semibold text-brand hover:bg-brand-background dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#48c0b8] dark:hover:bg-[#24302c]"
             >
               <Copy className="size-3.5" aria-hidden="true" />
               {labels.copy}

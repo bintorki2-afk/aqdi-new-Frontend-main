@@ -49,9 +49,9 @@ function getStepPillClassName(
       ? "cursor-pointer hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-secondary/30"
       : "cursor-not-allowed opacity-50",
     isActive
-      ? "bg-brand text-white shadow-[0_0_0_2px_#ffffff,0_0_0_4px_#0db38b] dark:shadow-[0_0_0_2px_#1a2421,0_0_0_4px_#0db38b] sm:shadow-none sm:ring-2 sm:ring-brand-secondary sm:ring-offset-2"
+      ? "bg-brand text-white shadow-[0_0_0_2px_#ffffff,0_0_0_4px_#00a880] dark:shadow-[0_0_0_2px_#1a2421,0_0_0_4px_#00a880] sm:shadow-none sm:ring-2 sm:ring-brand-secondary sm:ring-offset-2"
       : isCompleted
-        ? "bg-brand-background-green text-brand dark:bg-[#16352f] dark:text-[#7dccc0]"
+        ? "bg-brand-background-green text-brand dark:bg-[#16352f] dark:text-[#48c0b8]"
         : "bg-brand-background text-[#666666] dark:bg-[#16352f] dark:text-[#9eb5af]",
   );
 }
@@ -150,7 +150,7 @@ export default function CreateContractStepper({
                   isIntro
                     ? cn(
                         stepPillClassName,
-                        "gap-0.5 border border-brand/15 bg-white text-brand shadow-sm sm:gap-1.5 dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#7dccc0]",
+                        "gap-0.5 border border-brand/15 bg-white text-brand shadow-sm sm:gap-1.5 dark:border-[#2f403b] dark:bg-[#1a2421] dark:text-[#48c0b8]",
                         isUnlocked
                           ? "cursor-pointer hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-secondary/30"
                           : "cursor-not-allowed opacity-50",
@@ -200,7 +200,7 @@ export default function CreateContractStepper({
               ? "cursor-pointer hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-secondary/30"
               : "cursor-not-allowed opacity-50",
             isPaymentStep
-              ? "bg-brand shadow-[0_0_0_2px_#ffffff,0_0_0_4px_#0db38b] dark:shadow-[0_0_0_2px_#1a2421,0_0_0_4px_#0db38b] sm:shadow-none sm:ring-2 sm:ring-brand-secondary sm:ring-offset-2"
+              ? "bg-brand shadow-[0_0_0_2px_#ffffff,0_0_0_4px_#00a880] dark:shadow-[0_0_0_2px_#1a2421,0_0_0_4px_#00a880] sm:shadow-none sm:ring-2 sm:ring-brand-secondary sm:ring-offset-2"
               : "bg-brand-background dark:bg-[#16352f]",
           )}
         >
@@ -242,7 +242,7 @@ export default function CreateContractStepper({
           aria-hidden="true"
           className="h-auto min-w-0 flex-1 object-contain object-right dark:opacity-70"
         />
-        <p className="shrink-0 text-center text-[11px] font-medium text-brand sm:text-xs md:text-sm dark:text-[#7dccc0]">
+        <p className="shrink-0 text-center text-[11px] font-medium text-brand sm:text-xs md:text-sm dark:text-[#48c0b8]">
           {labels.journey}
         </p>
         <Image

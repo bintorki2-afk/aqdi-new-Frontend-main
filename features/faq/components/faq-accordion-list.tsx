@@ -101,7 +101,7 @@ export default function FaqAccordionList({
                       variant === "page" && "size-8",
                       variant === "page" &&
                         (isOpen
-                          ? "bg-[#0DB38B]"
+                          ? "bg-[#00a880]"
                           : "bg-muted text-muted-foreground"),
                     )}
                   >

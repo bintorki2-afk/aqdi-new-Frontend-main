@@ -44,7 +44,7 @@ export default function RequestCardActions({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={labels.whatsappLabel}
-        className="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-[#e8f8ee] text-[#25D366] transition-opacity hover:opacity-90 dark:bg-[#00a67e] dark:text-white"
+        className="inline-flex size-11 shrink-0 items-center justify-center rounded-2xl bg-[#e8f8ee] text-[#25D366] transition-opacity hover:opacity-90 dark:bg-[#00a880] dark:text-white"
       >
         <FaWhatsapp className="size-5" aria-hidden="true" />
       </Link>
