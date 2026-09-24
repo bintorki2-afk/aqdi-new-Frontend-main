@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import AppSection from "@/features/app/components/app-section";
 import BlogLatestSection from "@/features/blog/components/blog-latest-section";
 import BlogListingSection from "@/features/blog/components/blog-listing-section";
 import { getContentPageSeo } from "@/features/content-pages/services/get-content-pages";
@@ -21,7 +20,6 @@ export default function BlogPage() {
       <BlogLatestSection />
       <BlogListingSection />
       <SupportSection />
-      <AppSection />
       <FaqSectionBoundary />
     </main>
   );

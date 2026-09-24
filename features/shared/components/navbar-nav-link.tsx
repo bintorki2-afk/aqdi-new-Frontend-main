@@ -4,7 +4,6 @@ import type { MouseEvent, ReactNode } from "react";
 import { ArrowUpLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { APP_SECTION_ID } from "@/features/shared/constants/app-section";
 import { scrollToSection } from "@/features/shared/utils/scroll-to-section";
 
 type NavbarNavLinkProps = {
@@ -42,7 +41,7 @@ export default function NavbarNavLink({
 
     if (pathname !== "/") {
       event.preventDefault();
-      router.push(`/#${APP_SECTION_ID}`);
+      router.push("/");
     }
   }
 

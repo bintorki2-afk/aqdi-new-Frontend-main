@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import AppSection from "@/features/app/components/app-section";
 import AdvantagesSection from "@/features/advantages/components/advantages-section";
 import { advantageItemsConfig } from "@/features/advantages/data/advantage-items";
 import type { AdvantageItemTranslations } from "@/features/advantages/types/advantage";
@@ -132,7 +131,6 @@ export default async function Home() {
       <AdvantagesSection content={content.features} />
       <PricingSection content={content.pricing} />
       <SupportSection content={content.contact} />
-      <AppSection content={content.app} />
       <FaqSectionBoundary />
     </main>
   );

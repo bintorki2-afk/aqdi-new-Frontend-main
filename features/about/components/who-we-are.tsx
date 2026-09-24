@@ -1,5 +1,3 @@
-import MobileAppBtns from "@/features/shared/components/mobile-app-btns";
-import MobileAppLable from "@/features/shared/components/mobile-app-lable";
 import type { AboutHeroResolved } from "@/features/about/types/about-content";
 
 type WhoWeAreProps = {
@@ -24,10 +22,6 @@ export default function WhoWeAre({ content }: WhoWeAreProps) {
             {content.description}
           </p>
 
-          <div className="flex flex-col items-center gap-5 pt-2">
-            <MobileAppLable />
-            <MobileAppBtns />
-          </div>
         </div>
       </div>
     </section>

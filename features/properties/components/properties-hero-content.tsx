@@ -1,5 +1,4 @@
 import CustomIcon from "@/features/shared/components/custom-icon";
-import PropertiesAppDownload from "@/features/properties/components/properties-app-download";
 import PropertiesCtaButton from "@/features/properties/components/properties-cta-button";
 
 type PropertiesHeroContentProps = {
@@ -37,7 +36,6 @@ export default function PropertiesHeroContent({
       </div>
 
       <PropertiesCtaButton label={cta} />
-      <PropertiesAppDownload />
     </div>
   );
 }

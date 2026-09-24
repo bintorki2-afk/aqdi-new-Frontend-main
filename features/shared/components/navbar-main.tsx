@@ -13,7 +13,6 @@ import NotificationsNavButton from "@/features/notifications/components/notifica
 import CustomIcon from "@/features/shared/components/custom-icon";
 import NavbarMobileSheet from "@/features/shared/components/navbar-mobile-sheet";
 import NavbarNavLink from "@/features/shared/components/navbar-nav-link";
-import { APP_SECTION_ID } from "@/features/shared/constants/app-section";
 import StartWithAqdiDialog from "@/features/start-with-aqdi/components/start-with-aqdi-dialog";
 import type { StartWithAqdiDialogLabels } from "@/features/start-with-aqdi/types/start-with-aqdi-dialog-labels";
 import { cn } from "@/lib/utils";
@@ -41,7 +40,6 @@ type NavbarMainProps = {
   home: string;
   myProperties: string;
   requests: string;
-  downloadApp: string;
   cta: string;
   profile: string;
   menu: string;
@@ -64,7 +62,6 @@ export default function NavbarMain({
   home,
   myProperties,
   requests,
-  downloadApp,
   cta,
   profile,
   menu,
@@ -97,12 +94,6 @@ export default function NavbarMain({
       label: blog,
       icon: <CustomIcon src="/icons/news-letter.svg" size={16} />,
       external: true,
-    },
-    {
-      href: `/#${APP_SECTION_ID}`,
-      label: downloadApp,
-      icon: <CustomIcon src="/icons/app.svg" size={16} />,
-      scrollToSectionId: APP_SECTION_ID,
     },
   ];
 
@@ -197,7 +188,6 @@ export default function NavbarMain({
           home={home}
           myProperties={myProperties}
           requests={requests}
-          downloadApp={downloadApp}
           cta={cta}
           profile={profile}
           menu={menu}

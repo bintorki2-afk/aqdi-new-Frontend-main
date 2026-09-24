@@ -20,7 +20,6 @@ import UserSheet from "@/features/auth/components/user-sheet";
 import { useAuthStore } from "@/features/auth/stores/use-auth-store";
 import NotificationsNavButton from "@/features/notifications/components/notifications-nav-button";
 import CustomIcon from "@/features/shared/components/custom-icon";
-import { APP_SECTION_ID } from "@/features/shared/constants/app-section";
 import { scrollToSection } from "@/features/shared/utils/scroll-to-section";
 import StartWithAqdiDialog from "@/features/start-with-aqdi/components/start-with-aqdi-dialog";
 import type { StartWithAqdiDialogLabels } from "@/features/start-with-aqdi/types/start-with-aqdi-dialog-labels";
@@ -49,7 +48,6 @@ type NavbarMobileSheetProps = {
   home: string;
   myProperties: string;
   requests: string;
-  downloadApp: string;
   cta: string;
   profile: string;
   menu: string;
@@ -67,7 +65,6 @@ export default function NavbarMobileSheet({
   home,
   myProperties,
   requests,
-  downloadApp,
   cta,
   profile,
   menu,
@@ -94,12 +91,6 @@ export default function NavbarMobileSheet({
       iconSrc: "/icons/news-letter.svg",
       external: true,
     },
-    {
-      href: `/#${APP_SECTION_ID}`,
-      label: downloadApp,
-      iconSrc: "/icons/app.svg",
-      scrollToSectionId: APP_SECTION_ID,
-    },
   ];
 
   const topLinkClassName =
@@ -121,7 +112,7 @@ export default function NavbarMobileSheet({
 
     if (pathname !== "/") {
       event.preventDefault();
-      router.push(`/#${APP_SECTION_ID}`);
+      router.push("/");
     }
   }
 

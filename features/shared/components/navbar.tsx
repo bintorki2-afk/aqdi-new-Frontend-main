@@ -143,8 +143,7 @@ export default function Navbar({ dialogLabels }: NavbarProps) {
             home={t("nav.home")}
             myProperties={t("nav.myProperties")}
             requests={t("nav.requests")}
-            downloadApp={t("nav.downloadApp")}
-            cta={t("cta")}
+              cta={t("cta")}
             profile={t("profile")}
             menu={t("menu")}
             myAccount={t("myAccount")}

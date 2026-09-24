@@ -1,5 +1,4 @@
 import AdvantageCard from "@/features/advantages/components/advantage-card";
-import AdvantagesAppDownload from "@/features/advantages/components/advantages-app-download";
 import AdvantagesHeader from "@/features/advantages/components/advantages-header";
 import type { HomeFeaturesResolved } from "@/features/home/types/home-content";
 
@@ -31,7 +30,6 @@ export default function AdvantagesSection({ content }: AdvantagesSectionProps) {
           ))}
         </div>
 
-        <AdvantagesAppDownload />
       </div>
     </section>
   );

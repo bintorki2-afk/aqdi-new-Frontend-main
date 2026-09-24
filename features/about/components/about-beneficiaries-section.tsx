@@ -1,7 +1,5 @@
 import AboutBeneficiaryCard from "@/features/about/components/about-beneficiary-card";
 import type { AboutBeneficiariesResolved } from "@/features/about/types/about-content";
-import MobileAppBtns from "@/features/shared/components/mobile-app-btns";
-import MobileAppLable from "@/features/shared/components/mobile-app-lable";
 
 type AboutBeneficiariesSectionProps = {
   content: AboutBeneficiariesResolved;
@@ -36,10 +34,6 @@ export default function AboutBeneficiariesSection({
           ))}
         </div>
 
-        <div className="flex flex-col items-center gap-5">
-          <MobileAppLable />
-          <MobileAppBtns />
-        </div>
       </div>
     </section>
   );

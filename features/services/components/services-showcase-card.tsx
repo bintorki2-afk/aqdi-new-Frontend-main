@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import MobileAppLable from "@/features/shared/components/mobile-app-lable";
-import MobileAppBtns from "@/features/shared/components/mobile-app-btns";
 
 type ServicesShowcaseCardProps = {
   imageSrc: string;
@@ -43,10 +41,6 @@ export default function ServicesShowcaseCard({
         </h3>
         <p className=" leading-7 text-black">{description}</p>
 
-        <div className="space-y-2">
-<MobileAppLable/>
-<MobileAppBtns/>
-        </div>
 
 
 

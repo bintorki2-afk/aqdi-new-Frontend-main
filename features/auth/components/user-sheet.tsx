@@ -15,7 +15,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import CustomIcon from "@/features/shared/components/custom-icon";
 import ProfileEditDialog from "@/features/auth/components/profile-edit-dialog";
-import UserSheetAppDownload from "@/features/auth/components/user-sheet-app-download";
 import UserSheetHeader from "@/features/auth/components/user-sheet-header";
 import UserSheetMenuRow from "@/features/auth/components/user-sheet-menu-row";
 import UserSheetProfileSection from "@/features/auth/components/user-sheet-profile-section";
@@ -137,12 +136,6 @@ export default function UserSheet({ children }: UserSheetProps) {
               tiktokLabel={t("social.tiktok")}
             />
 
-            <UserSheetAppDownload
-              title={t("downloadApp")}
-              downloadOnThe={t("downloadOnThe")}
-              googlePlay={t("googlePlay")}
-              appStore={t("appStore")}
-            />
           </div>
         </SheetContent>
       </Sheet>
