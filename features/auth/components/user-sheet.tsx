@@ -39,12 +39,9 @@ export default function UserSheet({ children }: UserSheetProps) {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
   async function handleLogout() {
+    // Logout always clears the local session (even if the server call fails),
+    // so it resolves with ok:true — just confirm to the user.
     const response = await logout();
-
-    if (!response.ok) {
-      toast.error(response.error || t("accountSettings.logoutError"));
-      return;
-    }
 
     toast.success(response.message || t("accountSettings.logoutSuccess"));
   }
