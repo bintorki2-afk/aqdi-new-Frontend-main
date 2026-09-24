@@ -69,7 +69,7 @@ export function buildContractStep6Body({
   // The rent amount (إجمالي الإيجار) is collected and required on the finance
   // step but was never sent, so `annual_rent_amount_for_the_unit` stayed empty
   // on the server and the dashboard showed no contract amount (#1).
-  const rentDigits = financeData.totalRentAmount.replace(/\D/g, "");
+  const rentDigits = financeData.totalRentAmount.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (rentDigits && Number(rentDigits) > 0) {
     body.annual_rent_amount_for_the_unit = Number(rentDigits);
   }

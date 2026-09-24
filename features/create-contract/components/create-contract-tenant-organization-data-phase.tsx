@@ -28,7 +28,7 @@ type CreateContractTenantOrganizationDataPhaseProps = {
 };
 
 function isIdNumberComplete(idNumber: string) {
-  return idNumber.replace(/\D/g, "").length === 10;
+  return idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").length === 10;
 }
 
 function isUnifiedRecordNumberComplete(unifiedRecordNumber: string) {
@@ -36,7 +36,7 @@ function isUnifiedRecordNumberComplete(unifiedRecordNumber: string) {
     return false;
   }
 
-  const digits = unifiedRecordNumber.replace(/\D/g, "");
+  const digits = unifiedRecordNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits.length === UNIFIED_RECORD_NUMBER_LENGTH && digits.startsWith("7");
 }
 
@@ -109,7 +109,7 @@ export default function CreateContractTenantOrganizationDataPhase({
           onChange={(ownerIdNumber) =>
             updateField(
               "ownerIdNumber",
-              ownerIdNumber.replace(/\D/g, "").slice(0, 10),
+              ownerIdNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").slice(0, 10),
             )
           }
           icon={IdCard}

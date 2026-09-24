@@ -7,7 +7,7 @@ export function buildWhatsappHref(
     return fallback;
   }
 
-  const digits = raw.replace(/\D/g, "");
+  const digits = raw.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (!digits) {
     return fallback;
   }

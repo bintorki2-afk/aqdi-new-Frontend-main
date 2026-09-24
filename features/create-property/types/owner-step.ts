@@ -77,7 +77,7 @@ export function isPropertyAgentDataComplete(
     Boolean(options?.allowExistingPowerOfAttorney);
 
   return (
-    agentData.idNumber.replace(/\D/g, "").length === 10 &&
+    agentData.idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").length === 10 &&
     isAdultBirthDateComplete(agentData.birthDate) &&
     isPhoneComplete(agentData.phone) &&
     hasPowerOfAttorney

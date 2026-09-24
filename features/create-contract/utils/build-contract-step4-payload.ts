@@ -16,7 +16,7 @@ export type ContractStep4Payload = {
 type Step4JsonValue = string | number;
 
 function parseDatePart(value: string) {
-  const digits = value.replace(/\D/g, "");
+  const digits = value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits ? Number(digits) : 0;
 }
 
@@ -44,7 +44,7 @@ function appendTenantAgentFields(
     birthDate: BirthDateValue;
   },
 ) {
-  target.id_num_of_property_tenant_agent = idNumber.replace(/\D/g, "");
+  target.id_num_of_property_tenant_agent = idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   target.mobile_of_property_tenant_agent = formatPropertyOwnerMobileForApi(phone);
   appendTenantAgentBirthDate(target, birthDate);
 }
@@ -63,7 +63,7 @@ export function buildContractStep4Body({
     const { individual } = tenantData;
 
     body.tenant_entity = "person";
-    body.tenant_id_num = individual.idNumber.replace(/\D/g, "");
+    body.tenant_id_num = individual.idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
     body.tenant_dob_day = parseDatePart(individual.birthDate.day);
     body.tenant_dob_month = parseDatePart(individual.birthDate.month);
     body.tenant_dob_year = Number(formatPropertyOwnerYear(individual.birthDate.year));
@@ -74,7 +74,7 @@ export function buildContractStep4Body({
 
     body.tenant_entity = "institution";
     body.tenant_entity_unified_registry_number =
-      organization.unifiedRecordNumber.replace(/\D/g, "");
+      organization.unifiedRecordNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
     body.authorization_type = mapTenantDelegationToAuthorizationType(
       organization.delegationType as "owner-representative" | "agent-authorized",
     );

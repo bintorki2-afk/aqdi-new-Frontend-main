@@ -26,7 +26,7 @@ export type ContractStep3FormPayload = {
 function appendAgentFields(formData: FormData, agentData: AgentDataState) {
   formData.append(
     "id_num_of_property_owner_agent",
-    agentData.idNumber.replace(/\D/g, ""),
+    agentData.idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
   );
   appendPropertyOwnerBirthDate(formData, agentData.birthDate, {
     calendarField: "type_dob_property_owner_agent",
@@ -88,19 +88,19 @@ export function appendContractStep3Fields(
 
   formData.append(
     "property_owner_id_num",
-    ownerData.idNumber.replace(/\D/g, ""),
+    ownerData.idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
   );
   formData.append(
     "property_owner_dob_day",
-    ownerData.birthDate.day.replace(/\D/g, "").padStart(2, "0"),
+    ownerData.birthDate.day.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").padStart(2, "0"),
   );
   formData.append(
     "property_owner_dob_month",
-    ownerData.birthDate.month.replace(/\D/g, "").padStart(2, "0"),
+    ownerData.birthDate.month.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").padStart(2, "0"),
   );
   formData.append(
     "property_owner_dob_year",
-    ownerData.birthDate.year.replace(/\D/g, ""),
+    ownerData.birthDate.year.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
   );
   formData.append(
     "property_owner_mobile",

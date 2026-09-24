@@ -7,7 +7,7 @@ function displayCount(value: string | number | null | undefined) {
     return "";
   }
 
-  const parsed = Number(String(value).replace(/\D/g, ""));
+  const parsed = Number(String(value).replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""));
   if (!Number.isFinite(parsed) || parsed <= 0) {
     return "";
   }

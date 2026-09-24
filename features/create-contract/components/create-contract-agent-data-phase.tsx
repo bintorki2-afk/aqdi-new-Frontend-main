@@ -32,7 +32,7 @@ type CreateContractAgentDataPhaseProps = {
 };
 
 function isIdNumberComplete(idNumber: string) {
-  return idNumber.replace(/\D/g, "").length === 10;
+  return idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").length === 10;
 }
 
 export default function CreateContractAgentDataPhase({
@@ -101,7 +101,7 @@ export default function CreateContractAgentDataPhase({
           placeholder={labels.idNumber.placeholder}
           value={value.idNumber}
           onChange={(idNumber) =>
-            updateField("idNumber", idNumber.replace(/\D/g, "").slice(0, 10))
+            updateField("idNumber", idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").slice(0, 10))
           }
           icon={IdCard}
           dir="ltr"

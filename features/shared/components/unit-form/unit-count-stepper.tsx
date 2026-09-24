@@ -19,7 +19,7 @@ function parseCount(value: string) {
     return 0;
   }
 
-  const parsed = Number(value.replace(/\D/g, ""));
+  const parsed = Number(value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""));
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
 }
 

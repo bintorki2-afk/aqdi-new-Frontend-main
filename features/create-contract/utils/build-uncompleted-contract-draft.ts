@@ -54,7 +54,7 @@ export function buildOwnerDataFromStep3(
   return {
     ...EMPTY_OWNER_DATA,
     fullName: step3.name_owner?.trim() ?? "",
-    idNumber: step3.property_owner_id_num?.replace(/\D/g, "") ?? "",
+    idNumber: step3.property_owner_id_num?.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "") ?? "",
     birthDate: parseContractBirthDate(step3.property_owner_dob, calendarType),
     phone: formatContractPhoneForForm(step3.property_owner_mobile),
     iban: step3.property_owner_iban ?? "",
@@ -70,7 +70,7 @@ export function buildAgentDataFromStep3(
 
   return {
     ...EMPTY_AGENT_DATA,
-    idNumber: step3.id_num_of_property_owner_agent?.replace(/\D/g, "") ?? "",
+    idNumber: step3.id_num_of_property_owner_agent?.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "") ?? "",
     birthDate: parseContractBirthDate(
       step3.dob_of_property_owner_agent,
       calendarType,

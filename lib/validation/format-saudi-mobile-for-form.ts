@@ -10,7 +10,7 @@ export const SAUDI_MOBILE_LENGTH = 10;
  * Forces the result to start with 05 otherwise (e.g. 5xxxxxxxx → 05xxxxxxxx).
  */
 export function toSaudiMobileInputValue(raw: string) {
-  let digits = raw.replace(/\D/g, "");
+  let digits = raw.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 
   if (!digits) {
     return "";
@@ -60,6 +60,6 @@ export function formatSaudiMobileForForm(phone: string | null | undefined) {
 }
 
 export function isSaudiMobilePrefixOnly(phone: string) {
-  const digits = phone.replace(/\D/g, "");
+  const digits = phone.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits.length === 0 || digits === SAUDI_MOBILE_PREFIX;
 }

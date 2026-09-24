@@ -17,11 +17,11 @@ export const EMPTY_MANUAL_DEED_ENTRY: ManualDeedEntryData = {
 };
 
 export function normalizeInstrumentNumber(value: string) {
-  return value.replace(/\D/g, "");
+  return value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 }
 
 function formatInstrumentHistoryPart(value: string) {
-  const digits = value.replace(/\D/g, "");
+  const digits = value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (!digits) {
     return "";
   }
@@ -32,7 +32,7 @@ function formatInstrumentHistoryPart(value: string) {
 export function isManualDeedEntryComplete(value: ManualDeedEntryData) {
   const day = formatInstrumentHistoryPart(value.instrumentHistoryDay);
   const month = formatInstrumentHistoryPart(value.instrumentHistoryMonth);
-  const year = value.instrumentHistoryYear.replace(/\D/g, "");
+  const year = value.instrumentHistoryYear.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 
   return (
     value.instrumentNumber.trim().length > 0 &&
@@ -58,6 +58,6 @@ export function appendManualDeedEntryFields(
   );
   formData.append(
     "instrument_history_year",
-    value.instrumentHistoryYear.replace(/\D/g, ""),
+    value.instrumentHistoryYear.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
   );
 }

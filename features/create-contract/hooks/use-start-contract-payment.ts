@@ -45,13 +45,33 @@ export function useStartContractPayment() {
 
       if (!result.ok) {
         toast.error(result.error || errorLabel);
+        setIsPaying(false);
         return false;
       }
 
-      window.location.assign(withArabicPaymentLocale(result.data.paymentUrl));
+      // Only navigate to a real http(s) gateway URL — never a javascript:/data: URL.
+      let target: URL;
+      try {
+        target = new URL(result.data.paymentUrl);
+      } catch {
+        toast.error(errorLabel);
+        setIsPaying(false);
+        return false;
+      }
+      if (target.protocol !== "https:" && target.protocol !== "http:") {
+        toast.error(errorLabel);
+        setIsPaying(false);
+        return false;
+      }
+
+      // Leaving the app for the gateway: keep the button disabled during the
+      // redirect so a second click cannot start a duplicate payment.
+      window.location.assign(withArabicPaymentLocale(target.toString()));
       return true;
-    } finally {
+    } catch {
+      toast.error(errorLabel);
       setIsPaying(false);
+      return false;
     }
   }
 

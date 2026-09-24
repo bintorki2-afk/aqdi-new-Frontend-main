@@ -37,7 +37,7 @@ type CreateContractTenantRoleDialogProps = {
 };
 
 function formatAmount(value: string) {
-  const digits = value.replace(/\D/g, "");
+  const digits = value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (!digits) {
     return "";
   }
@@ -85,11 +85,11 @@ export default function CreateContractTenantRoleDialog({
   const isValidInput =
     !requiresInput ||
     (trimmed !== "" &&
-      (!isNumber || (/^\d+$/.test(trimmed.replace(/\D/g, "")) && Number(trimmed.replace(/\D/g, "")) > 0)));
+      (!isNumber || (/^\d+$/.test(trimmed.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "")) && Number(trimmed.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "")) > 0)));
 
   function handleConfirm() {
     if (requiresInput) {
-      const digits = isNumber ? draft.replace(/\D/g, "") : draft.trim();
+      const digits = isNumber ? draft.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "") : draft.trim();
       if (!digits || (isNumber && Number(digits) <= 0)) {
         setShowError(true);
         return;
@@ -183,7 +183,7 @@ export default function CreateContractTenantRoleDialog({
                   setShowError(false);
                   setDraft(
                     isNumber
-                      ? event.target.value.replace(/\D/g, "")
+                      ? event.target.value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "")
                       : event.target.value,
                   );
                 }}

@@ -62,9 +62,9 @@ export default function CreateContractContractStartDateFields({
   invalid = false,
 }: CreateContractContractStartDateFieldsProps) {
   const dayCount = value.calendarType === "hijri" ? 30 : 31;
-  const day = value.day.replace(/\D/g, "");
-  const month = value.month.replace(/\D/g, "");
-  const year = value.year.replace(/\D/g, "");
+  const day = value.day.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
+  const month = value.month.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
+  const year = value.year.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   const hasCompleteDate = Boolean(day && month && year);
   const selectedDateLabel = hasCompleteDate
     ? `${Number(day)}/${Number(month)}/${year}`

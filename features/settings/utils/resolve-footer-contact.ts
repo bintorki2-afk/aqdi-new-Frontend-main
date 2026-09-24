@@ -43,7 +43,7 @@ export function formatSaudiPhoneDisplay(contactNumber: string | null | undefined
     return null;
   }
 
-  const digits = raw.replace(/\D/g, "");
+  const digits = raw.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (!digits) {
     return null;
   }
@@ -77,7 +77,7 @@ export function resolveFooterPhoneHref(
     return null;
   }
 
-  const digits = number.replace(/\D/g, "");
+  const digits = number.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (!digits) {
     return null;
   }

@@ -8,7 +8,7 @@ export function formatPropertyOwnerMobileForApi(phone: string) {
     return `0${national}`;
   }
 
-  const digits = phone.replace(/\D/g, "");
+  const digits = phone.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits.startsWith("0") ? digits : `0${digits}`;
 }
 
@@ -21,12 +21,12 @@ export function isPropertyOwnerIbanComplete(iban?: string | null) {
 }
 
 export function formatPropertyOwnerDatePart(value: string) {
-  const digits = value.replace(/\D/g, "");
+  const digits = value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits.padStart(2, "0");
 }
 
 export function formatPropertyOwnerYear(value: string) {
-  return value.replace(/\D/g, "");
+  return value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 }
 
 export function appendPropertyOwnerBirthDate(

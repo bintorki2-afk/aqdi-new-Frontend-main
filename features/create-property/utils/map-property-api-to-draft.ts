@@ -61,7 +61,7 @@ function mapInstrumentType(value: string | null): PropertyDeedTypeId | "" {
 }
 
 function digitsOnly(value: string | number | null | undefined) {
-  return String(value ?? "").replace(/\D/g, "");
+  return String(value ?? "").replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 }
 
 function parseBirthDate(

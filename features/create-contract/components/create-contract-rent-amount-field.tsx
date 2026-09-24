@@ -26,7 +26,7 @@ type CreateContractRentAmountFieldProps = {
 };
 
 function formatRentAmount(value: string) {
-  const digits = value.replace(/\D/g, "");
+  const digits = value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 
   if (!digits) {
     return "";
@@ -48,7 +48,7 @@ export default function CreateContractRentAmountField({
   const t = useTranslations("createContract");
   const inputId = useId();
   const chrome = resolveFieldChromeState({ invalid, valid });
-  const numericValue = Number(value.replace(/\D/g, ""));
+  const numericValue = Number(value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""));
   const amountInWords =
     amountInWordsLabel && numericValue > 0
       ? amountInWordsLabel.replace(
@@ -81,7 +81,7 @@ export default function CreateContractRentAmountField({
           onChange={(event) => {
             // Cap at 12 digits: beyond ~15 digits `Number()` loses precision and
             // the displayed amount / words no longer match what was typed.
-            onChange(event.target.value.replace(/\D/g, "").slice(0, 12));
+            onChange(event.target.value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").slice(0, 12));
           }}
           placeholder={placeholder}
           aria-invalid={invalid}

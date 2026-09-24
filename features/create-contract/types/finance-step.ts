@@ -158,7 +158,7 @@ function isContractStartDateComplete(contractStartDate: BirthDateValue) {
 }
 
 function isRentAmountComplete(totalRentAmount: string) {
-  const digits = totalRentAmount.replace(/\D/g, "");
+  const digits = totalRentAmount.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits.length > 0 && Number(digits) > 0;
 }
 

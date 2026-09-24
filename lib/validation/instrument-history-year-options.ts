@@ -11,7 +11,7 @@ function getCurrentHijriYear() {
       year: "numeric",
     }).formatToParts(new Date());
     const yearPart = parts.find((part) => part.type === "year")?.value;
-    const year = yearPart ? Number(yearPart.replace(/\D/g, "")) : NaN;
+    const year = yearPart ? Number(yearPart.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "")) : NaN;
 
     if (Number.isFinite(year) && year > 0) {
       return year;

@@ -2,7 +2,7 @@ import { repairPhoneFromQueryParam } from "@/features/auth/utils/normalize-saudi
 
 export function formatPhoneDisplay(phone: string) {
   const repaired = repairPhoneFromQueryParam(phone) ?? phone;
-  const digits = repaired.replace(/\D/g, "");
+  const digits = repaired.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 
   let localNumber: string | null = null;
 

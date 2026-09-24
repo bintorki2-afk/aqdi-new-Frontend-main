@@ -4,7 +4,7 @@ export function normalizeSaudiPhone(phone: string): string {
 
 /** 9-digit Saudi national mobile, e.g. 512345678 */
 export function getSaudiNationalMobile(phone: string): string | null {
-  const digits = phone.trim().replace(/\s/g, "").replace(/\D/g, "");
+  const digits = phone.trim().replace(/\s/g, "").replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 
   if (!digits) {
     return null;

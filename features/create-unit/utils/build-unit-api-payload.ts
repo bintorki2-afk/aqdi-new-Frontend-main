@@ -2,7 +2,7 @@ import type { PropertyContractType } from "@/features/create-property/utils/cont
 import type { UnitDataState } from "@/features/create-unit/types/unit-data";
 
 function parseCount(value: string) {
-  const parsed = Number(value.replace(/\D/g, ""));
+  const parsed = Number(value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""));
   return Number.isFinite(parsed) ? parsed : 0;
 }
 

@@ -4,7 +4,7 @@ import type {
 } from "@/features/create-contract/types/owner-step";
 
 function padDatePart(value: string | number) {
-  return String(value).replace(/\D/g, "").padStart(2, "0");
+  return String(value).replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").padStart(2, "0");
 }
 
 function getGregorianTodayParts() {
@@ -33,7 +33,7 @@ function getHijriTodayParts() {
       return {
         day: padDatePart(day),
         month: padDatePart(month),
-        year: year.replace(/\D/g, ""),
+        year: year.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
       };
     }
   } catch {

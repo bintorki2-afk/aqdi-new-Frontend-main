@@ -51,12 +51,12 @@ function isBirthDateComplete(birthDate: OwnerBirthDateLike) {
 
 /** Saudi mobile as entered by the user: 05xxxxxxxx (10 digits). */
 export function isPhoneComplete(phone: string) {
-  const digits = phone.replace(/\D/g, "");
+  const digits = phone.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return /^05\d{8}$/.test(digits);
 }
 
 function isIdNumberComplete(idNumber: string) {
-  const digits = idNumber.replace(/\D/g, "");
+  const digits = idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits.length === 10;
 }
 
@@ -83,7 +83,7 @@ export function getOwnerDataValidationIssues(
 ): OwnerValidationIssue[] {
   const issues: OwnerValidationIssue[] = [];
 
-  const idDigits = ownerData.idNumber.replace(/\D/g, "");
+  const idDigits = ownerData.idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (idDigits.length === 0) {
     issues.push("idNumber");
   } else if (idDigits.length !== 10) {
@@ -112,7 +112,7 @@ export function getAgentDataValidationIssues(
 ): OwnerValidationIssue[] {
   const issues: OwnerValidationIssue[] = [];
 
-  const idDigits = agentData.idNumber.replace(/\D/g, "");
+  const idDigits = agentData.idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (idDigits.length === 0) {
     issues.push("idNumber");
   } else if (idDigits.length !== 10) {
@@ -141,7 +141,7 @@ export function getIdNumberFieldError(
   messages: { required: string; length: string },
   options?: { showEmpty?: boolean },
 ) {
-  const digits = idNumber.replace(/\D/g, "");
+  const digits = idNumber.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   if (digits.length === 0) {
     return options?.showEmpty ? messages.required : undefined;
   }

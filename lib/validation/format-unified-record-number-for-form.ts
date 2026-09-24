@@ -6,7 +6,7 @@ export const UNIFIED_RECORD_NUMBER_LENGTH = 10;
  * Normalize unified record number input to 7xxxxxxxxx (10 digits).
  */
 export function toUnifiedRecordNumberInputValue(raw: string) {
-  let digits = raw.replace(/\D/g, "");
+  let digits = raw.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
 
   if (!digits || digits === UNIFIED_RECORD_NUMBER_PREFIX) {
     return UNIFIED_RECORD_NUMBER_PREFIX;
@@ -43,6 +43,6 @@ export function getUnifiedRecordNumberSubscriber(value: string) {
 }
 
 export function isUnifiedRecordNumberPrefixOnly(value: string) {
-  const digits = value.replace(/\D/g, "");
+  const digits = value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "");
   return digits.length === 0 || digits === UNIFIED_RECORD_NUMBER_PREFIX;
 }

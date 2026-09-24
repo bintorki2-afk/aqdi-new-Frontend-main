@@ -55,7 +55,7 @@ function toOptionalCount(value: string | number | null | undefined) {
     return "";
   }
 
-  const parsed = Number(String(value).replace(/\D/g, ""));
+  const parsed = Number(String(value).replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""));
   if (!Number.isFinite(parsed) || parsed <= 0) {
     return "";
   }
@@ -81,7 +81,7 @@ export function buildContractOwnerData(
   return {
     ...EMPTY_OWNER_DATA,
     fullName: property.name_owner?.trim() ?? "",
-    idNumber: property.property_owner_id_num?.replace(/\D/g, "") ?? "",
+    idNumber: property.property_owner_id_num?.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "") ?? "",
     birthDate: parseContractBirthDate(
       property.property_owner_dob_hijri ?? property.dob_hijri,
       calendarType,
@@ -100,7 +100,7 @@ export function buildContractAgentData(
 
   return {
     ...EMPTY_AGENT_DATA,
-    idNumber: property.id_num_of_property_owner_agent?.replace(/\D/g, "") ?? "",
+    idNumber: property.id_num_of_property_owner_agent?.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "") ?? "",
     birthDate: parseContractBirthDate(property.dob_of_property_owner_agent, calendarType),
     phone: formatContractPhoneForForm(property.mobile_of_property_owner_agent),
     powerOfAttorneyFiles: [],

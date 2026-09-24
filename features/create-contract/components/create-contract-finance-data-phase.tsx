@@ -167,8 +167,8 @@ export default function CreateContractFinanceDataPhase({
       : value.contractPeriodId === "");
   const rentInvalid =
     showFieldErrors &&
-    (value.totalRentAmount.replace(/\D/g, "").length === 0 ||
-      Number(value.totalRentAmount.replace(/\D/g, "")) <= 0);
+    (value.totalRentAmount.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").length === 0 ||
+      Number(value.totalRentAmount.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "")) <= 0);
   const paymentInvalid = showFieldErrors && value.paymentTypeId === "";
   const contractStartDateInvalid =
     showFieldErrors &&
@@ -177,8 +177,8 @@ export default function CreateContractFinanceDataPhase({
       value.contractStartDate.year === "");
   const rentValid =
     !rentInvalid &&
-    value.totalRentAmount.replace(/\D/g, "").length > 0 &&
-    Number(value.totalRentAmount.replace(/\D/g, "")) > 0;
+    value.totalRentAmount.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "").length > 0 &&
+    Number(value.totalRentAmount.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, "")) > 0;
   const showRentAmount = isFinanceScheduleComplete(value);
   const showPaymentMethod = showRentAmount && isFinanceRentComplete(value);
   const showRemainingSections =

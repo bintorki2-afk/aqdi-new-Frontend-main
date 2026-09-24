@@ -18,7 +18,7 @@ export type AdultBirthDateValue = {
 };
 
 function parsePart(value: string) {
-  const parsed = Number(value.replace(/\D/g, ""));
+  const parsed = Number(value.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""));
   return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
 }
 
@@ -51,13 +51,13 @@ function getHijriParts(date: Date): BirthDateParts | null {
     }).formatToParts(date);
 
     const year = Number(
-      parts.find((part) => part.type === "year")?.value?.replace(/\D/g, ""),
+      parts.find((part) => part.type === "year")?.value?.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
     );
     const month = Number(
-      parts.find((part) => part.type === "month")?.value?.replace(/\D/g, ""),
+      parts.find((part) => part.type === "month")?.value?.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
     );
     const day = Number(
-      parts.find((part) => part.type === "day")?.value?.replace(/\D/g, ""),
+      parts.find((part) => part.type === "day")?.value?.replace(/[٠-٩۰-۹]/g, (d) => "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹".indexOf(d) % 10 + "").replace(/\D/g, ""),
     );
 
     if (
