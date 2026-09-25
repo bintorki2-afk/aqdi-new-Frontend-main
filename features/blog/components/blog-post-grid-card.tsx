@@ -49,10 +49,12 @@ export default function BlogPostGridCard({
             <Timer className="size-3" aria-hidden="true" />
             {post.readTime}
           </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Eye className="size-3" aria-hidden="true" />
-            {post.views}
-          </span>
+          {post.views ? (
+            <span className="inline-flex items-center gap-1.5">
+              <Eye className="size-3" aria-hidden="true" />
+              {post.views}
+            </span>
+          ) : null}
         </div>
 
         <Link

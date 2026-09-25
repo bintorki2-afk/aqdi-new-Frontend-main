@@ -1,38 +1,39 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import BlogListingLayout from "@/features/blog/components/blog-listing-layout";
-import {
-  BLOG_GRID_TOTAL_POSTS,
-  BLOG_POST_CATEGORY_ROTATION,
-  BLOG_POST_IMAGE,
-  BLOG_POST_SLUG,
-} from "@/features/blog/data/blog-post-config";
+import { ARTICLE_CATEGORY_LABEL_KEY } from "@/features/blog/data/blog-post-config";
+import { getAllArticles } from "@/features/blog/data/get-articles";
+import type { Article } from "@/features/blog/types/article";
 import type { BlogListingLabels } from "@/features/blog/types/blog-listing-labels";
-import type { BlogCategoryId } from "@/features/blog/types/blog-category";
 import type { BlogGridPost } from "@/features/blog/types/blog-post";
-
-function buildGridPosts(
-  postLabels: BlogListingLabels["post"],
-): BlogGridPost[] {
-  return Array.from({ length: BLOG_GRID_TOTAL_POSTS }, (_, index) => ({
-    slug: BLOG_POST_SLUG,
-    imageSrc: BLOG_POST_IMAGE,
-    featuredCategory: "",
-    featuredTitle: "",
-    listCategory: postLabels.listCategory,
-    listTitle: postLabels.listTitle,
-    description: "",
-    date: postLabels.date,
-    readTime: postLabels.readTime,
-    views: postLabels.views,
-    categoryId: BLOG_POST_CATEGORY_ROTATION[
-      index % BLOG_POST_CATEGORY_ROTATION.length
-    ] as BlogCategoryId,
-  }));
-}
+import { formatArticleDate } from "@/features/blog/utils/format-article-date";
 
 export default async function BlogListingSection() {
   const t = await getTranslations("blog.listing");
+  const tabsT = await getTranslations("blog.listing.tabs");
+  const locale = await getLocale();
+
+  const articles = await getAllArticles();
+
+  const categoryCounts = articles.reduce<Record<string, number>>(
+    (counts, article) => {
+      counts[article.categoryId] = (counts[article.categoryId] ?? 0) + 1;
+      return counts;
+    },
+    {},
+  );
+
+  const baseCategoryItems = t.raw(
+    "sidebar.categories.items",
+  ) as BlogListingLabels["sidebar"]["categories"]["items"];
+
+  // Reflect real article counts for the categories the store actually uses;
+  // leave the other (static) categories untouched.
+  const categoryItems = baseCategoryItems.map((item) =>
+    item.id in categoryCounts
+      ? { ...item, count: String(categoryCounts[item.id]) }
+      : item,
+  );
 
   const labels: BlogListingLabels = {
     tabs: {
@@ -57,7 +58,7 @@ export default async function BlogListingSection() {
       },
       categories: {
         title: t("sidebar.categories.title"),
-        items: t.raw("sidebar.categories.items") as BlogListingLabels["sidebar"]["categories"]["items"],
+        items: categoryItems,
       },
       tags: {
         title: t("sidebar.tags.title"),
@@ -86,7 +87,24 @@ export default async function BlogListingSection() {
     },
   };
 
-  const posts = buildGridPosts(labels.post);
+  const toGridPost = (article: Article): BlogGridPost => {
+    const categoryLabel = tabsT(ARTICLE_CATEGORY_LABEL_KEY[article.categoryId]);
+
+    return {
+      slug: article.slug,
+      imageSrc: article.coverImage,
+      featuredCategory: categoryLabel,
+      featuredTitle: article.title,
+      listCategory: categoryLabel,
+      listTitle: article.title,
+      description: article.excerpt,
+      date: formatArticleDate(article.date, locale),
+      readTime: article.readTime,
+      categoryId: article.categoryId,
+    };
+  };
+
+  const posts = articles.map(toGridPost);
 
   return (
     <section className=" py-12 md:py-16">

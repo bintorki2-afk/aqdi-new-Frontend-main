@@ -24,3 +24,10 @@ export const BLOG_POST_CATEGORY_ROTATION = [
   "contracts",
   "real-estate-market",
 ] as const;
+
+// Maps an article's categoryId to the i18n tab label key under `blog.listing.tabs`.
+export const ARTICLE_CATEGORY_LABEL_KEY = {
+  "property-management": "propertyManagement",
+  contracts: "contracts",
+  "real-estate-market": "realEstateMarket",
+} as const;

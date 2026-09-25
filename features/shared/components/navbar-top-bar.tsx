@@ -56,15 +56,15 @@ export default function NavbarTopBar({
             >
               {aboutUs}
             </Link>
-            <a
-              href="https://blogs.aqdi.sa/"
+            <Link
+              href="/blog"
               className={cn(
                 linkClassName,
                 pathname === "/blog" && "text-brand",
               )}
             >
               {blog}
-            </a>
+            </Link>
             <Link
               href="/faq"
               className={cn(linkClassName, pathname === "/faq" && "text-brand")}

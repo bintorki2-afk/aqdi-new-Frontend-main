@@ -1,18 +1,22 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import BlogFeaturedCard from "@/features/blog/components/blog-featured-card";
 import BlogLatestHeader from "@/features/blog/components/blog-latest-header";
 import BlogListCard from "@/features/blog/components/blog-list-card";
 import {
+  ARTICLE_CATEGORY_LABEL_KEY,
   BLOG_LIST_ITEMS_COUNT,
-  BLOG_POST_IMAGE,
-  BLOG_POST_SLUG,
 } from "@/features/blog/data/blog-post-config";
+import { getAllArticles } from "@/features/blog/data/get-articles";
+import type { Article } from "@/features/blog/types/article";
 import type { BlogLatestLabels } from "@/features/blog/types/blog-labels";
 import type { BlogPost } from "@/features/blog/types/blog-post";
+import { formatArticleDate } from "@/features/blog/utils/format-article-date";
 
 export default async function BlogLatestSection() {
   const t = await getTranslations("blog.latest");
+  const tabsT = await getTranslations("blog.listing.tabs");
+  const locale = await getLocale();
 
   const labels: BlogLatestLabels = {
     badge: t("badge"),
@@ -31,20 +35,27 @@ export default async function BlogLatestSection() {
     },
   };
 
-  const post: BlogPost = {
-    slug: BLOG_POST_SLUG,
-    imageSrc: BLOG_POST_IMAGE,
-    featuredCategory: labels.post.featuredCategory,
-    featuredTitle: labels.post.featuredTitle,
-    listCategory: labels.post.listCategory,
-    listTitle: labels.post.listTitle,
-    description: labels.post.description,
-    date: labels.post.date,
-    readTime: labels.post.readTime,
-    views: labels.post.views,
+  const articles = await getAllArticles();
+
+  const toPost = (article: Article): BlogPost => {
+    const categoryLabel = tabsT(ARTICLE_CATEGORY_LABEL_KEY[article.categoryId]);
+    const formattedDate = formatArticleDate(article.date, locale);
+
+    return {
+      slug: article.slug,
+      imageSrc: article.coverImage,
+      featuredCategory: categoryLabel,
+      featuredTitle: article.title,
+      listCategory: categoryLabel,
+      listTitle: article.title,
+      description: article.excerpt,
+      date: formattedDate,
+      readTime: article.readTime,
+    };
   };
 
-  const listItems = Array.from({ length: BLOG_LIST_ITEMS_COUNT }, () => post);
+  const [featured, ...rest] = articles;
+  const listItems = rest.slice(0, BLOG_LIST_ITEMS_COUNT).map(toPost);
 
   return (
     <section className="bg-white py-12 md:py-16">
@@ -56,15 +67,17 @@ export default async function BlogLatestSection() {
           shareLabel={labels.share}
         />
 
-        <div className="grid items-stretch gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-6">
-          <BlogFeaturedCard post={post} />
+        {featured ? (
+          <div className="grid items-stretch gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-6">
+            <BlogFeaturedCard post={toPost(featured)} />
 
-          <div className="flex h-full flex-col gap-4">
-            {listItems.map((item, index) => (
-              <BlogListCard key={`${item.slug}-${index}`} post={item} />
-            ))}
+            <div className="flex h-full flex-col gap-4">
+              {listItems.map((item) => (
+                <BlogListCard key={item.slug} post={item} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </section>
   );

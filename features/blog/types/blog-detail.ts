@@ -9,7 +9,7 @@ export type BlogDetailPost = {
   title: string;
   date: string;
   readTime: string;
-  views: string;
+  views?: string;
   imageSrc: string;
   imageAlt: string;
   sections: BlogDetailSection[];

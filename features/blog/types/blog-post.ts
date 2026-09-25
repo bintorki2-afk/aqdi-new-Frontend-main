@@ -10,7 +10,7 @@ export type BlogPost = {
   description: string;
   date: string;
   readTime: string;
-  views: string;
+  views?: string;
 };
 
 export type BlogGridPost = BlogPost & {

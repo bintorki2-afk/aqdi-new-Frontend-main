@@ -90,10 +90,9 @@ export default function NavbarMain({
       icon: <CustomIcon src="/icons/bag.svg" size={16} />,
     },
     {
-      href: "https://blogs.aqdi.sa/",
+      href: "/blog",
       label: blog,
       icon: <CustomIcon src="/icons/news-letter.svg" size={16} />,
-      external: true,
     },
   ];
 

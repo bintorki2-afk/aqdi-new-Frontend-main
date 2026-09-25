@@ -86,10 +86,9 @@ export default function NavbarMobileSheet({
     },
     { href: "/requests", label: requests, iconSrc: "/icons/bag.svg" },
     {
-      href: "https://blogs.aqdi.sa/",
+      href: "/blog",
       label: blog,
       iconSrc: "/icons/news-letter.svg",
-      external: true,
     },
   ];
 

@@ -1,10 +1,12 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import BlogDetailPageContent from "@/features/blog/components/blog-detail-page-content";
-import { BLOG_POST_IMAGE, BLOG_POST_SLUG } from "@/features/blog/data/blog-post-config";
-import type { BlogDetailComment } from "@/features/blog/types/blog-detail-comments";
-import type { BlogDetailLabels, BlogDetailSection } from "@/features/blog/types/blog-detail";
+import { ARTICLE_CATEGORY_LABEL_KEY } from "@/features/blog/data/blog-post-config";
+import { getArticleBySlug, getArticleSlugs } from "@/features/blog/data/get-articles";
+import type { BlogDetailCommentsLabels } from "@/features/blog/types/blog-detail-comments";
+import type { BlogDetailLabels, BlogDetailPost } from "@/features/blog/types/blog-detail";
+import { formatArticleDate } from "@/features/blog/utils/format-article-date";
 
 type BlogDetailPageProps = {
   params: Promise<{
@@ -12,14 +14,23 @@ type BlogDetailPageProps = {
   }>;
 };
 
+export async function generateStaticParams() {
+  const slugs = await getArticleSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const { slug } = await params;
 
-  if (slug !== BLOG_POST_SLUG) {
+  const article = await getArticleBySlug(slug);
+
+  if (!article) {
     notFound();
   }
 
   const t = await getTranslations("blog.detail");
+  const tabsT = await getTranslations("blog.listing.tabs");
+  const locale = await getLocale();
 
   const labels: BlogDetailLabels = {
     shareArticle: t("shareArticle"),
@@ -28,22 +39,23 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     shareGeneric: t("shareGeneric"),
   };
 
-  const post = {
-    slug,
-    category: t("post.category"),
-    title: t("post.title"),
-    date: t("post.date"),
-    readTime: t("post.readTime"),
-    views: t("post.views"),
-    imageSrc: BLOG_POST_IMAGE,
-    imageAlt: t("post.imageAlt"),
-    sections: t.raw("post.sections") as BlogDetailSection[],
+  const post: BlogDetailPost = {
+    slug: article.slug,
+    category: tabsT(ARTICLE_CATEGORY_LABEL_KEY[article.categoryId]),
+    title: article.title,
+    date: formatArticleDate(article.date, locale),
+    readTime: article.readTime,
+    imageSrc: article.coverImage,
+    imageAlt: article.imageAlt,
+    sections: article.sections,
   };
 
-  const commentsLabels = {
+  // Real articles have no seeded comments: pass an empty list while keeping the
+  // comments UI labels so the section still renders (tags, heading, form).
+  const commentsLabels: BlogDetailCommentsLabels = {
     tags: t.raw("comments.tags") as string[],
     title: t("comments.title"),
-    comments: t.raw("comments.items") as BlogDetailComment[],
+    comments: [],
     authorImageAlt: t("comments.authorImageAlt"),
     formTitle: t("comments.form.title"),
     formPlaceholder: t("comments.form.placeholder"),
@@ -58,6 +70,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       post={post}
       labels={labels}
       commentsLabels={commentsLabels}
+      sources={article.sources}
+      sourcesLabel={t("sources")}
     />
   );
 }
