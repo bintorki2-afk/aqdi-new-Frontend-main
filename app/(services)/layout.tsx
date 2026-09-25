@@ -25,7 +25,7 @@ export default async function ServicesLayout({
       </ServicesPageProvider>
 
       <FooterBottomBar
-        copyright={footer("copyright")}
+        copyright={footer("copyright", { year: String(new Date().getFullYear()) })}
         terms={footer("terms")}
         privacy={footer("privacy")}
         termsHref={footer("termsHref")}
