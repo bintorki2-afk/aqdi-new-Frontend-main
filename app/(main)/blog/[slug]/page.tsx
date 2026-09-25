@@ -4,7 +4,11 @@ import { notFound } from "next/navigation";
 
 import BlogDetailPageContent from "@/features/blog/components/blog-detail-page-content";
 import { ARTICLE_CATEGORY_LABEL_KEY } from "@/features/blog/data/blog-post-config";
-import { getArticleBySlug, getArticleSlugs } from "@/features/blog/data/get-articles";
+import {
+  getAllArticles,
+  getArticleBySlug,
+  getArticleSlugs,
+} from "@/features/blog/data/get-articles";
 import type { BlogDetailCommentsLabels } from "@/features/blog/types/blog-detail-comments";
 import type { BlogDetailLabels, BlogDetailPost } from "@/features/blog/types/blog-detail";
 import { formatArticleDate } from "@/features/blog/utils/format-article-date";
@@ -103,13 +107,60 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     shareAriaLabel: t("comments.shareAriaLabel"),
   };
 
+  // Related articles: same category first, then fill with the latest, max 3.
+  const allArticles = await getAllArticles();
+  const related = [
+    ...allArticles.filter(
+      (a) => a.slug !== article.slug && a.categoryId === article.categoryId,
+    ),
+    ...allArticles.filter(
+      (a) => a.slug !== article.slug && a.categoryId !== article.categoryId,
+    ),
+  ]
+    .slice(0, 3)
+    .map((a) => ({
+      slug: a.slug,
+      title: a.title,
+      excerpt: a.excerpt,
+      category: tabsT(ARTICLE_CATEGORY_LABEL_KEY[a.categoryId]),
+      readTime: a.readTime,
+    }));
+
+  // Article structured data (JSON-LD) for richer Google results.
+  const pageUrl = `${SITE_URL}/blog/${slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.date,
+    dateModified: article.date,
+    image: `${SITE_URL}${article.coverImage}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    author: { "@type": "Organization", name: "عقد إيجار" },
+    publisher: {
+      "@type": "Organization",
+      name: "عقد إيجار",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/images/logo.png` },
+    },
+  };
+
   return (
-    <BlogDetailPageContent
-      post={post}
-      labels={labels}
-      commentsLabels={commentsLabels}
-      sources={article.sources}
-      sourcesLabel={t("sources")}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogDetailPageContent
+        post={post}
+        labels={labels}
+        commentsLabels={commentsLabels}
+        sources={article.sources}
+        sourcesLabel={t("sources")}
+        relatedArticles={related}
+        relatedTitle="مقالات ذات صلة"
+        relatedReadMoreLabel="اقرأ المقال"
+      />
+    </>
   );
 }
