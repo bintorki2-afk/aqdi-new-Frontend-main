@@ -3,13 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowUpLeft } from "lucide-react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { HiBars2 } from "react-icons/hi2";
-
 import { Button } from "@/components/ui/button";
-import UserSheet from "@/features/auth/components/user-sheet";
-import { useAuthStore } from "@/features/auth/stores/use-auth-store";
-import NotificationsNavButton from "@/features/notifications/components/notifications-nav-button";
 import CustomIcon from "@/features/shared/components/custom-icon";
 import NavbarMobileSheet from "@/features/shared/components/navbar-mobile-sheet";
 import NavbarNavLink from "@/features/shared/components/navbar-nav-link";
@@ -69,25 +63,11 @@ export default function NavbarMain({
   notifications,
   dialogLabels,
 }: NavbarMainProps) {
-  const pathname = usePathname();
-  const { user } = useAuthStore();
-
   const navItems: NavItem[] = [
     {
       href: "/",
       label: home,
       icon: <CustomIcon src="/icons/home.svg" size={16} />,
-    },
-    {
-      href: "/properties/my-properties",
-      label: myProperties,
-      icon: <CustomIcon src="/icons/lable.svg" size={16} />,
-      isActive: pathname === "/properties/my-properties",
-    },
-    {
-      href: "/requests",
-      label: requests,
-      icon: <CustomIcon src="/icons/bag.svg" size={16} />,
     },
     {
       href: "/blog",
@@ -133,17 +113,6 @@ export default function NavbarMain({
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          {!user && (
-            <Link href="/login">
-              <Button
-                variant="outline"
-                className="size-12 rounded-full border-border/80 text-muted-foreground hover:border-brand/30 hover:text-brand"
-                aria-label={profile}
-              >
-                <CustomIcon src="/icons/user.svg" size={16} />
-              </Button>
-            </Link>
-          )}
           <StartWithAqdiDialog labels={dialogLabels}>
             <Button className="group h-12 gap-3 rounded-full bg-brand px-5 pe-2 text-sm font-semibold text-white hover:bg-brand/90">
               <span>{cta}</span>
@@ -155,22 +124,6 @@ export default function NavbarMain({
               </span>
             </Button>
           </StartWithAqdiDialog>
-
-          {user && (
-            <div className="flex items-center gap-3">
-              <NotificationsNavButton label={notifications} />
-
-              <UserSheet>
-                <Button
-                  variant="outline"
-                  className="size-12 rounded-full border-border/80 text-muted-foreground hover:border-brand/30 hover:text-brand"
-                  aria-label={profile}
-                >
-                  <HiBars2 className="text-gray-600" size={16} />
-                </Button>
-              </UserSheet>
-            </div>
-          )}
         </div>
 
         <NavbarMobileSheet

@@ -1,27 +1,15 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import {
-  isGuestOnlyRoute,
-  isProtectedRoute,
-} from "@/lib/auth/auth-routes";
-import { AUTH_TOKEN_COOKIE } from "@/lib/api/constants";
+import { isGuestOnlyRoute, isProtectedRoute } from "@/lib/auth/auth-routes";
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get(AUTH_TOKEN_COOKIE)?.value;
   const { pathname } = request.nextUrl;
 
-  if (!token && isProtectedRoute(pathname)) {
-    const loginUrl = request.nextUrl.clone();
-    loginUrl.pathname = "/login";
-    // Keep the original query in the callback (e.g. /create-contract?id=residential)
-    // instead of leaking it onto /login and sending the user to the wrong flow.
-    loginUrl.search = "";
-    loginUrl.searchParams.set("callbackUrl", `${pathname}${request.nextUrl.search}`);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  if (token && isGuestOnlyRoute(pathname)) {
+  // No-account model: the site has no login. The old account routes
+  // (/properties, /requests, /notifications) and the auth routes
+  // (/login, /register, …) all redirect to home so there are no orphaned pages.
+  if (isProtectedRoute(pathname) || isGuestOnlyRoute(pathname)) {
     const homeUrl = request.nextUrl.clone();
     homeUrl.pathname = "/";
     homeUrl.search = "";
