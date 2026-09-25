@@ -353,7 +353,7 @@
         },
         {
           "label": "المدونة",
-          "href": "https://blogs.aqdi.sa/"
+          "href": "/blog"
         },
         {
           "label": "الأسئلة الشائعة",
@@ -371,10 +371,6 @@
         {
           "label": "توثيق عقد تجاري",
           "href": "/create-contract?id=commercial"
-        },
-        {
-          "label": "العقود",
-          "href": "/requests"
         }
       ]
     },
