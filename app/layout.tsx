@@ -10,6 +10,9 @@ import { SentryInit } from "@/components/sentry-init";
 import WebsiteClosedScreen from "@/features/website-status/components/website-closed-screen";
 import { getWebsiteStatus } from "@/features/website-status/services/get-website-status";
 import { getWebsiteClosedView } from "@/features/website-status/utils/get-website-closed-view";
+import GtmScripts from "@/features/analytics/components/gtm-scripts";
+import GtmNoScript from "@/features/analytics/components/gtm-noscript";
+import CookieNotice from "@/features/analytics/components/cookie-notice";
 
 const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   variable: "--font-ibm-plex-sans-arabic",
@@ -79,6 +82,8 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <GtmNoScript />
+        <GtmScripts />
         <SentryInit />
         {closedView ? (
           <WebsiteClosedScreen view={closedView} />
@@ -87,6 +92,7 @@ export default async function RootLayout({
             <DirectionProvider dir={direction} direction={direction}>
               <NextIntlClientProvider locale={locale} messages={messages}>
                 {children}
+                <CookieNotice />
                 <Toaster position="top-center" />
               </NextIntlClientProvider>
             </DirectionProvider>

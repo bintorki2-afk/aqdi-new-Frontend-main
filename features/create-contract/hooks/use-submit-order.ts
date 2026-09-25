@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import type { ContractTypeId } from "@/features/create-contract/types/contract-type";
 import type { CreateContractReviewOrderSummary } from "@/features/create-contract/types/create-contract-review-order";
+import { trackLead } from "@/features/analytics/utils/track";
 
 type UseSubmitOrderArgs = {
   summary: CreateContractReviewOrderSummary;
@@ -95,6 +96,13 @@ export function useSubmitOrder({ summary, contractType }: UseSubmitOrderArgs) {
 
       const outcome: SubmitOrderResult = { ok, orderNumber };
       setResult(outcome);
+
+      if (ok) {
+        // Conversion signal for GTM — wired to Google Ads / Meta / TikTok /
+        // X / Snap as the "generate_lead" conversion trigger.
+        trackLead({ orderNumber, contractType: contractTypeLabel });
+      }
+
       return outcome;
     } catch {
       const outcome: SubmitOrderResult = { ok: false, orderNumber };
