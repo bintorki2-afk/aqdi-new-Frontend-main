@@ -1,0 +1,32 @@
+import type { MetadataRoute } from "next";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aqdi.sa";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        // API, auth flows and per-user / transactional service routes: not
+        // meaningful to index and often gated behind authentication.
+        disallow: [
+          "/api/",
+          "/login",
+          "/register",
+          "/forgot-password",
+          "/verify-otp",
+          "/reset-password",
+          "/profile",
+          "/notifications",
+          "/requests",
+          "/properties",
+          "/create-contract",
+          "/payment",
+        ],
+      },
+    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
+  };
+}

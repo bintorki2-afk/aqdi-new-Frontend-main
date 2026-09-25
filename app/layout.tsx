@@ -14,6 +14,8 @@ import GtmScripts from "@/features/analytics/components/gtm-scripts";
 import GtmNoScript from "@/features/analytics/components/gtm-noscript";
 import CookieNotice from "@/features/analytics/components/cookie-notice";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aqdi.sa";
+
 const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   variable: "--font-ibm-plex-sans-arabic",
   // Only weights used in UI (medium/semibold/bold/extrabold→700).
@@ -29,6 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const description = t("metaDescription");
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: title,
       template: `%s | ${title}`,

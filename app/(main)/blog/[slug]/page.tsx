@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -17,6 +18,43 @@ type BlogDetailPageProps = {
 export async function generateStaticParams() {
   const slugs = await getArticleSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://aqdi.sa";
+
+export async function generateMetadata({
+  params,
+}: BlogDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getArticleBySlug(slug);
+
+  if (!article) {
+    return {};
+  }
+
+  const url = `${SITE_URL}/blog/${slug}`;
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description: article.excerpt,
+      url,
+      publishedTime: article.date,
+      images: [{ url: article.coverImage, alt: article.imageAlt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+      images: [article.coverImage],
+    },
+  };
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
